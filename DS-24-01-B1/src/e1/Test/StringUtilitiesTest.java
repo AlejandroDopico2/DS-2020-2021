@@ -1,8 +1,11 @@
-package e1;
+package e1.Test;
 
-import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import e1.StringUtilities;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 class StringUtilitiesTest {
 
