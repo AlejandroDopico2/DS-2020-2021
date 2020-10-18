@@ -1,4 +1,7 @@
 package e1;
+
+import java.util.Random;
+
 public class StringUtilities {
     public String a, b, c;
     public static boolean isValidMix ( String a , String b , String c ) {
@@ -32,7 +35,29 @@ public class StringUtilities {
         return false;
     }
     public static String generateRandomValidMix ( String a , String b) {
-        return "si";
+        StringBuilder a_t=new StringBuilder();
+        StringBuilder b_t=new StringBuilder();
+        a_t.append(a);
+        b_t.append(b);
+        Random x = new Random();
+        StringBuilder c = new StringBuilder(a.length()+b.length());
+        char t = 0;
+        int y=0, z=0;
+        for(int i=0;i<c.length();i++){
+            int introducido = x.nextInt(2);
+            if(introducido==0){
+                if(y<=a.length()) {
+                    t = a_t.charAt(y);
+                    y++;
+                }
+            }else {
+                if(z<=b.length()){
+                t=b_t.charAt(z);
+                z++;
+                }
+            }
+            c.append(t);
+        }
+        return c.toString();
     }
-
 }
