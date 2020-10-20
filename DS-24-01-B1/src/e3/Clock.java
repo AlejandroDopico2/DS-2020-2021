@@ -1,9 +1,13 @@
 package e3;
 
-/*public class Clock {
+import java.time.Period;
+
+public class Clock {
     private final int hours;
     private final int minutes;
     private final int seconds;
+    private Period period;
+    public enum Period {AM, PM}
 
 
     public Clock (String s){
@@ -62,10 +66,10 @@ package e3;
         return seconds;
     }
 
-    /*
-    public int getPeriod(){
 
-    }
+//    public int getPeriod(){
+//        return null;
+//    }
 
     public String printHour24(){
         return hours + ":" + minutes + ":" + seconds;
@@ -75,30 +79,30 @@ package e3;
         return getHours12() + ":" + minutes + ":" + seconds;
     }
 
-    @Override
-    public boolean equals (Object o) {
-        if(this == o) {
-            return true;
-        }
-        if (o == null) {
-            return false;
-        }
+//    @Override
+//    public boolean equals (Object o) {
+//        if(this == o) {
+//            return true;
+//        }
+//        if (o == null) {
+//            return false;
+//        }
+//
+//        Clock clock = (Clock) o;
+//        if (this.hours != o.hours)
+//            return false;
+//            if (this.minutes != o.minutes)
+//                return false;
+//        return this.seconds.equals;
+//
+//    }
 
-        Clock clock = (Clock) o;
-        if (this.hours != o.hours)
-            return false;
-            if (this.minutes != o.minutes)
-                return false;
-        return this.seconds.equals;
-
-    }
-
-    @Override
-    public int hashCode () {
-        int result = hours;
-        result = 31 * result + minutes.hashCode();
-        return result;
-    }
+//    @Override
+//    public int hashCode () {
+//        int result = hours;
+//        result = 31 * result + minutes.hashCode();
+//        return result;
+//    }
 
     @Override
     public String toString() {
@@ -113,4 +117,3 @@ package e3;
 
     }
 }
-*/
