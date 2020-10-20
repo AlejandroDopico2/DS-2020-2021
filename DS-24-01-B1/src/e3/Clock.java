@@ -1,6 +1,6 @@
 package e3;
 
-public class Clock {
+/*public class Clock {
     private final int hours;
     private final int minutes;
     private final int seconds;
@@ -65,7 +65,7 @@ public class Clock {
     /*
     public int getPeriod(){
 
-    }*/
+    }
 
     public String printHour24(){
         return hours + ":" + minutes + ":" + seconds;
@@ -113,3 +113,4 @@ public class Clock {
 
     }
 }
+*/

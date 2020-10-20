@@ -1,63 +1,38 @@
 package e1;
 
-import java.util.Random;
 
 public class StringUtilities {
-    public String a, b, c;
-    public static boolean isValidMix ( String a , String b , String c ) {
-        if(c.length() > a.length() + b.length ()){
-            return false;
-        }else{
-            StringBuilder a_t=new StringBuilder();
-            StringBuilder b_t=new StringBuilder();
-            a_t.append(a);
-            b_t.append(b);
-            StringBuilder c_t=new StringBuilder();
-            c_t.append(c);
-            int posicionA = 0, posicionB = 0;
-            for(int i=0;i<c_t.length(); i++){
-                char t=c_t.charAt(i);
-                while(posicionA <= a_t.length()){
-                    if( a_t.charAt(posicionA) == t){
-                        posicionA++;
-                    }
+    public static boolean isValidMix ( String a , String b , String c ) { //este vai bien refacherito
+        int p = 0, q = 0,  i=0;
+       if(c.length() != a.length()+b.length()){
+           return false;
+       }else {
+            do {
+                if (p < a.length()&&a.charAt(p) == c.charAt(i)) {
+                    p++;
                 }
-                while(posicionB <= b_t.length()){
-                    if( b_t.charAt(posicionB) == t){
-                        posicionB++;
-                    }
+                if (q < b.length()&&b.charAt(q) == c.charAt(i)) {
+                    q++;
                 }
-            }
-            if(posicionA + posicionB == c_t.length()){
-                return true;
-            }
-        }
-        return false;
+                i++;
+            } while (i < c.length());
+       }
+       return c.length()==p+q;
     }
     public static String generateRandomValidMix ( String a , String b) {
-        StringBuilder a_t=new StringBuilder();
-        StringBuilder b_t=new StringBuilder();
-        a_t.append(a);
-        b_t.append(b);
-        Random x = new Random();
         StringBuilder c = new StringBuilder(a.length()+b.length());
-        char t = 0;
-        int y=0, z=0;
-        for(int i=0;i<c.length();i++){
-            int introducido = x.nextInt(2);
-            if(introducido==0){
-                if(y<=a.length()) {
-                    t = a_t.charAt(y);
+        int y=0, z=0, i=0;
+        do{
+            int x = (int) (Math.random()*2+1);
+            if(x==1 && y<a.length()){
+                    c.append(a.charAt(y));
                     y++;
-                }
-            }else {
-                if(z<=b.length()){
-                t=b_t.charAt(z);
-                z++;
-                }
+            }else if(x==2 && z<b.length()){
+                    c.append(b.charAt(z));
+                    z++;
             }
-            c.append(t);
-        }
+            i++;
+        }while(i<c.length());
         return c.toString();
     }
 }
