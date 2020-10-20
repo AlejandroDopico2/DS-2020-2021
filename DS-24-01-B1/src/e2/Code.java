@@ -15,28 +15,22 @@ public class Code {
 
     public static boolean isKeypadValid ( char [][] keypad ) {
         if(keypad !=null) {
-
             if (keypad[0][0] == '1'){
 
-                for (int i = 0; i < keypad.length; i++) {
-
-                    for (int j = 0; j < keypad[i].length; j++) {
-
-                        if (keypad[i] != null) {
-
-                            if (keypad[i][j] >= keypad[i][j + 1] || keypad[i][j] >= keypad[i + 1][j]) {
-                                return false;
-                            }
-
-                        } else
+                for (int i = 1; i < keypad.length; i++) {
+                    if(keypad[i]==null){
+                        return false;
+                    }
+                    for (int j = 1; j < keypad[i].length; j++) {
+                        if (keypad[i][j] < keypad[i][j - 1] || keypad[i][j] < keypad[i - 1][j]) {
                             return false;
+                        }
+                    }
                     }
                 }
-            } else {
-                return false;
-            }
-        } else
+        } else {
             return false;
+        }
         return true;
     }
 
@@ -80,10 +74,5 @@ public class Code {
     public static String obtainCode ( char [][] keypad , String [] movements ) {
         return null;
 
-    }
-
-    public static void main(String[] args) {
-
-        Code[][] code = new Code[3][3];
     }
 }
