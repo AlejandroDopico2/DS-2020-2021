@@ -22,17 +22,20 @@ public class StringUtilities {
     public static String generateRandomValidMix ( String a , String b) {
         StringBuilder c = new StringBuilder(a.length()+b.length());
         int y=0, z=0, i=0;
-        do{
-            int x = (int) (Math.random()*2+1);
+        int x;
+        while(c.length()<((a.length()+b.length()))){
+            x = (int) (Math.random()*(2))+1;
             if(x==1 && y<a.length()){
                     c.append(a.charAt(y));
                     y++;
-            }else if(x==2 && z<b.length()){
+
+            }
+            if(x==2 && z<b.length()){
                     c.append(b.charAt(z));
                     z++;
             }
             i++;
-        }while(i<c.length());
+        }
         return c.toString();
     }
 }
