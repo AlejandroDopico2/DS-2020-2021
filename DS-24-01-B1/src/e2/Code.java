@@ -72,7 +72,36 @@ public class Code {
      * @throws IllegalArgumentException if the keypad of the movements are invalid .
      */
     public static String obtainCode ( char [][] keypad , String [] movements ) {
-        return null;
+        StringBuilder aux= new StringBuilder(movements.length);
+        int c=0, f=0;
 
+        for (String movement : movements) {
+            for (int i = 0; i < movement.length(); i++) {
+                switch (movement.charAt(i)) {
+                    case 'U':
+                        if(f>0) {
+                            f--;
+                        }
+                        break;
+                    case 'D':
+                        if(f<(keypad.length-1)) {
+                            f++;
+                        }
+                        break;
+                    case 'R':
+                        if(c<(keypad[0].length-1)) {
+                            c++;
+                        }
+                        break;
+                    case 'L':
+                        if(c>0) {
+                            c--;
+                        }
+                        break;
+                }
+            }
+            aux.append(keypad[f][c]);
+        }
+        return aux.toString();
     }
 }
