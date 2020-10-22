@@ -2,8 +2,9 @@ package e4;
 
 public enum Color {
         GREEN( 15),
-        AMBER( 5),
-        RED( 20);
+        AMBERB( 5),
+        AMBERNB(5),
+        RED( 0);
 
 
         private final int tiempo;
