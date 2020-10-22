@@ -13,28 +13,33 @@ public class TrafficJunction {
 
     public void timesGoesBy () {
         for (Semaforo semaforo : junction) {
-            if (!Semaforo.cambioColor(semaforo)) {
-                System.out.println("Si");
+            Semaforo.cambioColor(semaforo, false);
+//            if (!Semaforo.cambioColor(semaforo, false)) {
+//                System.out.println("Si");
             }
         }
-    }
+
     public void amberJunction(boolean active){
-        if(active){
-
+        if(active) {
+            for (Semaforo semaforo : junction)
+                Semaforo.cambioColor(semaforo, true);
+        }else
+            Semaforo.resetJunction();
         }
-
-    }
 
    @Override
     public String toString() {
         StringBuilder c= new StringBuilder(new String(""));
        for(Semaforo semaforo : junction){
            c.append("[").append(semaforo.getNombre()).append(": ");
-           if(semaforo.getColor()==Color.AMBERNB){
+           if(semaforo.getColor()==Color.AMBERNB) {
                c.append("AMBER OFF");
+           }else if (semaforo.getColor() == Color.AMBERB){
+               c.append("AMBER ON");
            }else{
                c.append(semaforo.getColor());
            }
+
            if(semaforo.getColor()==Color.GREEN||semaforo.getColor()==Color.AMBERNB) {
                c.append(" ").append(semaforo.getContador());
            }
