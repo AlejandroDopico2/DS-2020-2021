@@ -21,9 +21,9 @@ public class StringUtilities {
     }
     public static String generateRandomValidMix ( String a , String b) {
         StringBuilder c = new StringBuilder(a.length()+b.length());
-        int y=0, z=0, i=0;
+        int y=0, z=0;
         int x;
-        while(c.length()<((a.length()+b.length()))){
+        while(c.length()<(a.length()+b.length())){
             x = (int) (Math.random()*(2))+1;
             if(x==1 && y<a.length()){
                     c.append(a.charAt(y));
@@ -34,7 +34,6 @@ public class StringUtilities {
                     c.append(b.charAt(z));
                     z++;
             }
-            i++;
         }
         return c.toString();
     }

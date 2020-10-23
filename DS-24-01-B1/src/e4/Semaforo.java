@@ -1,10 +1,10 @@
 package e4;
 
 public enum Semaforo {
-    NORTH(Nombre.NORTH, Color.GREEN, 0),
-    SOUTH(Nombre.SOUTH, Color.RED, 0),
-    EAST(Nombre.EAST, Color.RED, 0),
-    WEST(Nombre.WEST, Color.RED, 0);
+    S1(Nombre.NORTH, Color.GREEN, 0),
+    S2(Nombre.SOUTH, Color.RED, 0),
+    S3(Nombre.EAST, Color.RED, 0),
+    S4(Nombre.WEST, Color.RED, 0);
 
     private final Nombre nombre;
     private Color color;
@@ -28,35 +28,41 @@ public enum Semaforo {
         return contador;
     }
 
-    public static void cambioColor (Semaforo si, boolean active) {
+    public static void cambioColor (Semaforo sem, boolean active) {
         if (active) {
-            si.color = Color.AMBERB;
+            sem.color = Color.AMBERB;
         } else {
-            if (si.getColor() == Color.AMBERNB) {
-                if (si.contador == Color.AMBERNB.getTiempo()) {
-                    si.color = Color.RED;
-                    si.contador = 0;
-                    if (si.nombre == Nombre.NORTH) {
-                        Semaforo.SOUTH.color = Color.GREEN;
-                        Semaforo.SOUTH.contador--;
-                    } else if (si.nombre == Nombre.SOUTH) {
-                        Semaforo.EAST.color = Color.GREEN;
-                        Semaforo.EAST.contador--;
-                    } else if (si.nombre == Nombre.EAST) {
-                        Semaforo.WEST.color = Color.GREEN;
-                        Semaforo.WEST.contador--;
-                    } else {
-                        Semaforo.NORTH.color = Color.GREEN;
-                        Semaforo.NORTH.contador--;
-                    }
+            if (sem.getColor() == Color.AMBERNB) {
+                if (sem.contador == Color.AMBERNB.getTiempo()) {
+                    sem.color = Color.RED;
+                    sem.contador = 0;
+                    switch(sem.nombre){
+                        case NORTH :
+                            Semaforo.S2.color = Color.GREEN;
+                            Semaforo.S2.contador--;
+                            break;
+                        case SOUTH :
+                            Semaforo.S3.color = Color.GREEN;
+                            Semaforo.S3.contador--;
+                            break;
+                        case EAST :
+                            Semaforo.S4.color = Color.GREEN;
+                            Semaforo.S4.contador--;
+                            break;
+                        case WEST:
+                            Semaforo.S1.color = Color.GREEN;
+                            Semaforo.S1.contador--;
+                            break;
+                        }
+                } else {
+                    aumentarContador(sem);
+                }
+            } else if(sem.getColor() == Color.GREEN){
+                if(sem.contador == Color.GREEN.getTiempo()){
+                    sem.color = Color.AMBERNB;
+                    sem.contador = 0;
                 } else
-                    aumentarContador(si);
-            } else if(si.getColor() == Color.GREEN){
-                if(si.contador == Color.GREEN.getTiempo()){
-                    si.color = Color.AMBERNB;
-                    si.contador = 0;
-                } else
-                    aumentarContador(si);
+                    aumentarContador(sem);
             }
         }
     }
