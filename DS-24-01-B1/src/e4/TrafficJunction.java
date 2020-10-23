@@ -13,9 +13,7 @@ public class TrafficJunction {
 
     public void timesGoesBy () {
         for (Semaforo semaforo : junction) {
-            Semaforo.cambioColor(semaforo, false);
-//            if (!Semaforo.cambioColor(semaforo, false)) {
-//                System.out.println("Si");
+           Semaforo.cambioColor(semaforo, false);
             }
         }
 
@@ -29,7 +27,7 @@ public class TrafficJunction {
 
    @Override
     public String toString() {
-        StringBuilder c= new StringBuilder(new String(""));
+        StringBuilder c= new StringBuilder();
        for(Semaforo semaforo : junction){
            c.append("[").append(semaforo.getNombre()).append(": ");
            if(semaforo.getColor()==Color.AMBERNB) {
@@ -47,8 +45,4 @@ public class TrafficJunction {
        }
        return c.toString();
     }
-
-
 }
-
-

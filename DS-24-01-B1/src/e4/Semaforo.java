@@ -28,35 +28,41 @@ public enum Semaforo {
         return contador;
     }
 
-    public void setColor(Color color) {
-        color = this.color;
-    }
-
-    public static void cambioColor(Semaforo si, boolean active) {
+    public static void cambioColor (Semaforo si, boolean active) {
         if (active) {
             si.color = Color.AMBERB;
         } else {
-            if (si.getColor() == Color.GREEN) {
-                if (si.contador == Color.GREEN.getTiempo()) {
-                    si.color = Color.AMBERNB;
-                    si.contador = 0;
-                } else {
-                    aumentarContador(si);
-                }
-            } else if (si.getColor() == Color.AMBERNB) {
+            if (si.getColor() == Color.AMBERNB) {
                 if (si.contador == Color.AMBERNB.getTiempo()) {
                     si.color = Color.RED;
                     si.contador = 0;
-                } else {
+                    if (si.nombre == Nombre.NORTH) {
+                        Semaforo.SOUTH.color = Color.GREEN;
+                        Semaforo.SOUTH.contador--;
+                    } else if (si.nombre == Nombre.SOUTH) {
+                        Semaforo.EAST.color = Color.GREEN;
+                        Semaforo.EAST.contador--;
+                    } else if (si.nombre == Nombre.EAST) {
+                        Semaforo.WEST.color = Color.GREEN;
+                        Semaforo.WEST.contador--;
+                    } else {
+                        Semaforo.NORTH.color = Color.GREEN;
+                        Semaforo.NORTH.contador--;
+                    }
+                } else
                     aumentarContador(si);
-                }
+            } else if(si.getColor() == Color.GREEN){
+                if(si.contador == Color.GREEN.getTiempo()){
+                    si.color = Color.AMBERNB;
+                    si.contador = 0;
+                } else
+                    aumentarContador(si);
             }
         }
     }
 
-
-    public static int aumentarContador(Semaforo si) {
-        return si.contador++;
+    public static void aumentarContador(Semaforo si) {
+        si.contador++;
     }
 
     public static void resetJunction() {
