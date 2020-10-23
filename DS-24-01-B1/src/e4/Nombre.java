@@ -12,9 +12,9 @@ public enum Nombre {
         this.indice=indice;
     }
 
-    public int getIndice(){ return indice; }
-
-    public boolean cambioNombre(int i){
-        return i < this.indice;
-    }
+//    public int getIndice(){ return indice; }
+//
+//    public boolean cambioNombre(int i){
+//        return i < this.indice;
+//    }
 }
