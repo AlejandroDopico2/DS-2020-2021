@@ -66,7 +66,7 @@ public enum Semaforo {
     }
 
     public static void resetJunction() {
-        for (Semaforo semaforo : values()) {
+        for (Semaforo semaforo : Semaforo.values()) {
             if (semaforo.nombre == Nombre.NORTH) {
                 semaforo.color = Color.GREEN;
             } else

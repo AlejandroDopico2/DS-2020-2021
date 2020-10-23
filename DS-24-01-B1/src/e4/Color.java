@@ -6,7 +6,6 @@ public enum Color {
         AMBERNB(5),
         RED( 0);
 
-
         private final int tiempo;
 
         Color( int tiempo){
