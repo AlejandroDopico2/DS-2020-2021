@@ -1,7 +1,7 @@
 package e1;
 
-public class Trasgo extends Heroe{
-    Trasgo(String name, int HP, int armor) {
+public class Trasgo extends Bestia{
+    Trasgo(String name, int HP, int armor){
         super(name, HP, armor);
     }
 }
