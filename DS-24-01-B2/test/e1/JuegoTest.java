@@ -8,11 +8,4 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JuegoTest {
 
-
-
-    @Test
-    void Batalla() {
-        Juego partida=new Juego();
-
-    }
 }

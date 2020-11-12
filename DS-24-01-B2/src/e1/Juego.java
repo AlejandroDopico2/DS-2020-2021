@@ -13,5 +13,7 @@ public class Juego {
         Random Aleatorio = new Random(2837);
         return Aleatorio.nextInt(tipo)+1;
     }
+    public void Ventajas(int damage){
+    }
 
 }
