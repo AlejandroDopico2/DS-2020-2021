@@ -5,6 +5,4 @@ public class Orcos extends Bestia{
         super(name, HP, armor);
     }
 
-    @Override
-
 }

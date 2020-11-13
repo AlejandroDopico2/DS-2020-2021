@@ -5,7 +5,6 @@ package e1;
 
      public void Ataque (Dado Dado, Personaje rival){
         int dmg = Dado.Tirada(90);
-
         rival.Damage(dmg);
     }
  }

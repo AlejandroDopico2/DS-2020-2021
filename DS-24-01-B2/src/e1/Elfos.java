@@ -6,9 +6,9 @@ public class Elfos extends Heroe{
     }
 
     @Override
-    public void Ataque(Dado dado, Personaje rival){
+    public void Ataque(DadoTrucado dado, Personaje rival){
 
-        int dmg = Math.max(Dado.Tirada(100), Dado.Tirada(100));
+        int dmg = Math.max(dado.Tirada(100), dado.Tirada(100));
 
         if(rival instanceof Orcos){
             dmg -= 10;

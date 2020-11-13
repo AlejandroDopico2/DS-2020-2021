@@ -5,5 +5,16 @@ public class Hobbits extends Heroe {
         super(name, HP, armor);
     }
 
+    @Override
+    public void Ataque(DadoTrucado dado, Personaje rival){
+
+        int dmg = Math.max(dado.Tirada(100), dado.Tirada(100));
+
+        if(rival instanceof Trasgo){
+            dmg -= 5;
+        }
+
+        rival.Damage(dmg);
+    }
 
 }
