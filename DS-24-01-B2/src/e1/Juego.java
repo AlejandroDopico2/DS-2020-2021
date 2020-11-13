@@ -4,15 +4,27 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Juego {
-    ArrayList<Heroe> EjercitoH = new ArrayList<Heroe>();
-    ArrayList<Bestia> EjercitoB = new ArrayList<Bestia>();
-    //public void Ventajas(int damage){
-    //}
-
+    ArrayList<Heroe> EjercitoH = new ArrayList<>();
+    ArrayList<Bestia> EjercitoB = new ArrayList<>();
+    Dado DadoT = new Dado();
 
     public void Batalla(){
-        //EjercitoH.get(0);
-        //EjercitoB.get(0);
+        // Se crea una lista de String
+        Heroe H;
+        Bestia B;
+
+        while (!EjercitoH.isEmpty() || !EjercitoB.isEmpty()) {
+            H = EjercitoH.get(0);
+            B = EjercitoB.get(0);
+
+            H.Ataque(DadoT, B);
+            B.Ataque(DadoT, H);
+
+
+
+            //H.takeDamage();
+
+        }
     }
 
 }
