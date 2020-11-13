@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Juego {
+    ArrayList<Heroe> EjercitoH = new ArrayList<Heroe>();
+    ArrayList<Bestia> EjercitoB = new ArrayList<Bestia>();
+    //public void Ventajas(int damage){
+    //}
 
-    public int Dado(int tipo){
-        Random Aleatorio = new Random();
-       return Aleatorio.nextInt(tipo)+1;
-    }
-    public int DadoTrucado(int tipo){
-        Random Aleatorio = new Random(2837);
-        return Aleatorio.nextInt(tipo)+1;
-    }
-    public void Ventajas(int damage){
+
+    public void Batalla(){
+        //EjercitoH.get(0);
+        //EjercitoB.get(0);
     }
 
 }
