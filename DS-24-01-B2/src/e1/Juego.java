@@ -12,40 +12,56 @@ public class Juego {
     }
 
     public void Batalla(){
-        // Se crea una lista de String
+        ArrayList<StringBuilder> Resumen = new ArrayList<>();
         Heroe H;
         Bestia B;
-        int i=0;
+        int i,turnos=1;
+        while (!EjercitoH.isEmpty() && !EjercitoB.isEmpty()) {
+            StringBuilder turno = new StringBuilder(100);
+            turno.append("Turn").append(turnos).append("\n");
+            for (i=0;i<EjercitoH.size()&&i<EjercitoB.size();i++) {
+                H = EjercitoH.get(i);
+                B = EjercitoB.get(i);
+                turno.append("Fight between ").append(H.getName()).append(" (Energy= ").append(H.getHP()).append(") and ").append(B.getName()).append("(Energy=").append(B.getHP()).append(")").append("\n");
 
-        while (!EjercitoH.isEmpty() || !EjercitoB.isEmpty()) {
-            H = EjercitoH.get(0);
-            B = EjercitoB.get(0);
+                H.Ataque(DadoT, B);
+                B.Ataque(DadoT, H);
 
-            System.out.println(H.getHP());
-            System.out.println(B.getHP());
-
-            H.Ataque(DadoT, B);
-            B.Ataque(DadoT, H);
-
-            System.out.println(H.getHP());
-            System.out.println(B.getHP());
-
-            if(B.getHP()<0){
-                EjercitoB.remove(B);
+                if (B.getHP() < 0) {
+                    turno.append(B.getClass().getSimpleName()).append(" ").append(B.getName()).append(" dies! ").append("\n");
+                    EjercitoB.remove(B);
+                }
+                if (H.getHP() < 0) {
+                    turno.append(H.getClass().getSimpleName()).append(" ").append(H.getName()).append(" dies! ").append("\n");
+                    EjercitoH.remove(H);
+                }
             }
-            if(H.getHP()<0){
-                EjercitoH.remove(H);
-            }
+            Resumen.add(turno);
+            turnos ++;
+        }
+        for(i=0;i<Resumen.size();i++){
+            System.out.println(Resumen.get(i));
+        }
+
+        if(EjercitoH.isEmpty()){
+            System.out.println("BESTIAS WIN!!!");
+        }
+        if(EjercitoB.isEmpty()){
+            System.out.println("HEROES WIN!!!");
         }
     }
 
     public static void main(String [] args){
         Juego josemanuel = new Juego();
         Heroe si = new Elfos ("Juse", 150, 30);
-        Bestia messi = new Orcos ("Jandro", 150, 30);
+        Heroe sisoy = new Elfos ("Abel", 150, 30);
+        Bestia messirve = new Orcos ("Jandro", 150, 30);
+        Bestia no = new Orcos ("Paco", 150, 30);
 
         josemanuel.EjercitoH.add(si);
-        josemanuel.EjercitoB.add(messi);
+        josemanuel.EjercitoH.add(sisoy);
+        josemanuel.EjercitoB.add(messirve);
+        josemanuel.EjercitoB.add(no);
 
         josemanuel.Batalla();
     }
