@@ -1,20 +1,22 @@
 package e2;
 
 public class Matrix {
-    //private final int row;
-    //private final int column;
+    private int [][] matriz;
 
 
-
-    //public Matrix(int row, int column){
-    //    this.row = row;
-    //    this.column = column;
+    public Matrix(int row, int column){
         // Recorrer todas las columnas poniendo su valor a 0 => Iterator
-    //}
+    }
 
-    //public Matrix(int [][]matrix){
-
-    //}
+    public Matrix(int [][] si){
+        int i=0;
+        if(si.length != si[i].length){
+            throw new IllegalArgumentException("No es rectangular");
+        }else{
+            //Aquí construimos a matriz usando iterators
+            throw new IllegalArgumentException("Así es");
+        }
+    }
 
     //public int getRow() {
       //  return row;
@@ -23,6 +25,5 @@ public class Matrix {
     //public int getColumn() {
        // return column;
    // }
-
 
 }

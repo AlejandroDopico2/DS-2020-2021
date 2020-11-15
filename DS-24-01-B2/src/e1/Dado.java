@@ -8,5 +8,4 @@ public class Dado {
         Random Dado = new Random();
         return Dado.nextInt(max+1);
     }
-
 }

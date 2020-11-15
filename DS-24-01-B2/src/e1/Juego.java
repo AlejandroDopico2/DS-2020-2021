@@ -6,12 +6,11 @@ import java.util.Random;
 public class Juego {
     ArrayList<Heroe> EjercitoH = new ArrayList<>();
     ArrayList<Bestia> EjercitoB = new ArrayList<>();
-    DadoTrucado DadoT = new DadoTrucado();
 
     public Juego(){
     }
 
-    public void Batalla(){
+    public void Batalla(Dado DadoT){
         ArrayList<StringBuilder> Resumen = new ArrayList<>();
         Heroe H;
         Bestia B;
@@ -26,16 +25,23 @@ public class Juego {
 
                 H.Ataque(DadoT, B);
                 B.Ataque(DadoT, H);
-
+            }
+            for (i=0;i<EjercitoH.size()&&i<EjercitoB.size();i++) {
+                H = EjercitoH.get(i);
+                B = EjercitoB.get(i);
                 if (B.getHP() < 0) {
                     turno.append(B.getClass().getSimpleName()).append(" ").append(B.getName()).append(" dies! ").append("\n");
                     EjercitoB.remove(B);
+                    i--;
                 }
                 if (H.getHP() < 0) {
                     turno.append(H.getClass().getSimpleName()).append(" ").append(H.getName()).append(" dies! ").append("\n");
                     EjercitoH.remove(H);
+                    i--;
                 }
             }
+
+
             Resumen.add(turno);
             turnos ++;
         }
@@ -52,6 +58,7 @@ public class Juego {
     }
 
     public static void main(String [] args){
+        DadoTrucado puede = new DadoTrucado();
         Juego josemanuel = new Juego();
         Heroe si = new Elfos ("Juse", 150, 30);
         Heroe sisoy = new Elfos ("Abel", 150, 30);
@@ -63,7 +70,7 @@ public class Juego {
         josemanuel.EjercitoB.add(messirve);
         josemanuel.EjercitoB.add(no);
 
-        josemanuel.Batalla();
+        josemanuel.Batalla(puede);
     }
 
 }
