@@ -5,6 +5,7 @@ public class Matrix {
 
 
     public Matrix(int row, int column){
+        this.matriz=new int[row][column]; //Inicializamos la matriz
         // Recorrer todas las columnas poniendo su valor a 0 => Iterator
     }
 
@@ -13,8 +14,13 @@ public class Matrix {
         if(si.length != si[i].length){
             throw new IllegalArgumentException("No es rectangular");
         }else{
+            this.matriz=new int[si.length][si[0].length]; //Inicializamos la matriz
             //Aquí construimos a matriz usando iterators
-            throw new IllegalArgumentException("Así es");
+            for(int f = 0; f<si.length; f++){
+                for(int c = 0; c<si[f].length; c++){
+                    this.matriz[f][c]=si[f][c];
+                }
+            }
         }
     }
 
