@@ -1,6 +1,8 @@
 package e2;
 
-public class Matrix {
+import java.util.Iterator;
+
+public class Matrix implements Iterable<Integer> {
     private int [][] matriz;
 
 
@@ -16,12 +18,17 @@ public class Matrix {
         }else{
             this.matriz=new int[si.length][si[0].length]; //Inicializamos la matriz
             //Aquí construimos a matriz usando iterators
-            for(int f = 0; f<si.length; f++){
-                for(int c = 0; c<si[f].length; c++){
-                    this.matriz[f][c]=si[f][c];
-                }
-            }
+            //for(int f = 0; f<si.length; f++){
+            //    for(int c = 0; c<si[f].length; c++){
+            //        this.matriz[f][c]=si[f][c];
+            //    }
+            //}
         }
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new IteratorMod(matriz);
     }
 
     //public int getRow() {
