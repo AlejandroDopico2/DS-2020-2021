@@ -17,7 +17,7 @@ public abstract class Personaje {
 
     public void Damage(int damage){
         if(damage>getArmor()){
-            this.HP=HP - damage - getArmor();
+            this.HP=HP - (damage - getArmor());
         }
     }
 
