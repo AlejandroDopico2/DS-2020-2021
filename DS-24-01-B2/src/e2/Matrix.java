@@ -9,6 +9,8 @@ public class Matrix implements Iterable<Integer> {
     public Matrix(int row, int column){
         this.matriz=new int[row][column]; //Inicializamos la matriz
         // Recorrer todas las columnas poniendo su valor a 0 => Iterator
+        while(iterator().hasNext()){
+        }
     }
 
     public Matrix(int [][] si){

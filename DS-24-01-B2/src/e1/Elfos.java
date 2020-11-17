@@ -11,7 +11,7 @@ public class Elfos extends Heroe{
         int dmg = Math.max(dado.Tirada(100), dado.Tirada(100));
 
         if(rival instanceof Orcos){
-            dmg -= 10;
+            dmg += 10;
         }
 
         rival.Damage(dmg);
