@@ -3,42 +3,45 @@ package e2;
 import java.util.Iterator;
 
 public class Matrix implements Iterable<Integer> {
-    private int [][] matriz;
+    public int [][] matriz;
 
 
     public Matrix(int row, int column){
         this.matriz=new int[row][column]; //Inicializamos la matriz
         // Recorrer todas las columnas poniendo su valor a 0 => Iterator
-        while(iterator().hasNext()){
+        while(){
+
         }
     }
 
-    public Matrix(int [][] si){
+    public Matrix(int [][] data){
         int i=0;
-        if(si.length != si[i].length){
+        if(data.length != data[i].length){
             throw new IllegalArgumentException("No es rectangular");
         }else{
-            this.matriz=new int[si.length][si[0].length]; //Inicializamos la matriz
+            this.matriz=new int[data.length][data[0].length]; //Inicializamos la matriz
             //Aquí construimos a matriz usando iterators
-            //for(int f = 0; f<si.length; f++){
-            //    for(int c = 0; c<si[f].length; c++){
-            //        this.matriz[f][c]=si[f][c];
-            //    }
-            //}
         }
     }
 
-    @Override
-    public Iterator<Integer> iterator() {
-        return new IteratorMod(matriz);
+    public Iterator<Integer> iteratorRowColumn (){
+        return new IteratorRow(matriz);
     }
 
-    //public int getRow() {
-      //  return row;
-    //}
+    public Iterator<Integer> iteratorColumnRow(){
+        return new IteratorColumn(matriz);
+    }
 
-    //public int getColumn() {
-       // return column;
-   // }
+//    public int getRow() {
+//        return row;
+//    }
+//
+//    public int getColumn() {
+//        return column;
+//    }
+
+    public int getValor(int row, int column){
+
+    }
 
 }
