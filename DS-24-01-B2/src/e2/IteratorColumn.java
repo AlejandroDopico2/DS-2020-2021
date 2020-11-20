@@ -22,7 +22,7 @@ public class IteratorColumn implements Iterator<Integer> {
     public Integer next(){
         if(!hasNext())
             throw new NoSuchElementException();
-        else if(i >= data[j].length) {
+        else if(i >= data.length) {
             j++;
             i=0;
 
