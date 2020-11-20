@@ -2,8 +2,9 @@ package e2;
 
 import java.util.Iterator;
 
-public class Matrix {
+public class Matrix implements Iterable<Integer>{
     public int [][] matriz;
+    boolean who;
 
 
     public Matrix(int row, int column){
@@ -29,8 +30,9 @@ public class Matrix {
         }
     }
 
-    public Iterator<Integer> iterator(boolean who){
-        if(who){
+    @Override
+    public Iterator<Integer> iterator(){
+        if(this.who){
             return this.rowColumnIterator();
         }else{
             return this.ColumnRowIterator();
