@@ -7,26 +7,27 @@ import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class IteratorColumnTest {
+    @Test
     public void testGetData() {
-        int[] fila1 = {0, 1, 2, 3};
-        int[] fila2 = {4, 5, 6, 7};
-        int[] fila3 = {8, 9, 10, 11};
-        int[] fila4 = {12, 13, 14, 15};
-        int[][] data = {fila1, fila2, fila3, fila4};
+        int[] columna1 = {0, 4, 8, 12};
+        int[] columna2 = {1, 5, 9, 13};
+        int[] columna3 = {2, 6, 10, 14};
+        int[] columna4 = {3, 7, 11, 15};
+        int[][] data = {columna1, columna2, columna3, columna4};
         IteratorColumn test = new IteratorColumn(data);
-        int i = 0;
+        int j = 0;
         while (test.hasNext()) {
             int dato = test.next();
-            assertEquals(i++,dato);
+            assertEquals(j++,dato);
         }
     }
 
     @Test
     public void testNoSuchElementException() {
-        int[] fila1 = {0};
-        int[] fila2 = {1};
-        int[][] data = {fila1, fila2};
-        IteratorRow test = new IteratorRow(data);
+        int[] columna1 = {0};
+        int[] columna2 = {1};
+        int[][] data = {columna1, columna2};
+        IteratorColumn test = new IteratorColumn(data);
         assertEquals(test.next(), 0);
         assertEquals(test.next(), 1);
         assertFalse(test.hasNext());
@@ -38,7 +39,7 @@ class IteratorColumnTest {
     @Test
     public void testReturnFalseForEmptyDataset() {
         int[][] data = new int[0][0];
-        IteratorRow test = new IteratorRow(data);
+        IteratorColumn test = new IteratorColumn(data);
         assertFalse(test.hasNext());
     }
 

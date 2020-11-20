@@ -13,9 +13,9 @@ public class IteratorColumn implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        if (j >= data.length)
+        if (i >= data.length)
             return false;
-        return i < data[j].length || j != data.length - 1;
+        return j < data[i].length || j != data.length - 1;
     }
 
     @Override

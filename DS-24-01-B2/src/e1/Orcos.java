@@ -7,11 +7,9 @@ public class Orcos extends Bestia{
 
     @Override
     public void Ataque(Dado dado, Personaje rival){
-
+        int armor=0;
         int dmg = dado.Tirada(90);
 
         rival.Damage(dmg);
     }
-
-
 }
