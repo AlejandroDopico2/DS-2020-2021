@@ -29,11 +29,11 @@ public class Matrix {
         }
     }
 
-    public void iterator(boolean who){
+    public Iterator<Integer> iterator(boolean who){
         if(who){
-            this.rowColumnIterator();
+            return this.rowColumnIterator();
         }else{
-            this.ColumnRowIterator();
+            return this.ColumnRowIterator();
         }
     }
 
@@ -42,7 +42,7 @@ public class Matrix {
     }
 
     public Iterator<Integer> ColumnRowIterator(){
-        return new IteratorColumn(this.matriz);
+       return new IteratorColumn(this.matriz);
     }
 
     public int getRow() {
