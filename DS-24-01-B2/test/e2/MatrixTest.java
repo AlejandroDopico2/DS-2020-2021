@@ -19,7 +19,7 @@ class MatrixTest {
             {7, 8, 9}};
 
     @Test
-    void rowColumnConstructor(){
+    void ConstructorTest(){
         Matrix m = new Matrix(1,1);
         assertEquals(1, m.getRow());
         assertEquals(1, m.getColumn());
@@ -176,8 +176,45 @@ class MatrixTest {
         assertFalse(testR.hasNext());
     }
 
-//    @Test
-//    public void getStringTest(){
-//        assertEquals("[0	1	][2 4	]", m2.getString() );
+    @Test
+    public void copyMatrix() {
+        Matrix m = new Matrix(m3);
+        int [][]copia = m.getCopy();
+
+        for (int i = 0; i < m.getRow(); i++) {
+            for (int j = 0; j < m.getColumn(); j++) {
+                assertEquals(m3[i][j], copia[i][j]);
+            }
+        }
+    }
+
+//    public void copyMatrix() {
+//        Matrix m = new Matrix(m3);
+//        for (int i = 0; i < m.getRow(); i++) {
+//            for (int j = 0; j < m.getColumn(); j++) {
+//                assertEquals(m3[i][j], m.getCopy()[i][j]);
+//            }
+//        }
 //    }
+
+    @Test
+    public void getStringTest(){
+        Matrix m = new Matrix(m2);
+        assertEquals("[1\t2\t]\n" + "[3\t4\t]\n", m.getString() );
+    }
+
+    @Test
+    public void MatrixAddition(){
+        int[][] data = {{0, 1},{2, 3}};
+        Matrix m1= new Matrix(data);
+        Matrix m2= new Matrix(data);
+        MatrixAddition Addition = new MatrixAddition();
+
+        Matrix suma = Addition.Addition(m1, m2, true);
+        assertEquals("[0\t2\t]\n" + "[4\t6\t]\n", suma.getString());
+
+        Matrix suma2 = Addition.Addition(m1, m2, false);
+        assertEquals("[0\t2\t]\n" + "[4\t6\t]\n", suma2.getString());
+
+    }
 }

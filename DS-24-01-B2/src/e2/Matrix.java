@@ -1,5 +1,6 @@
 package e2;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class Matrix implements Iterable<Integer>{
@@ -79,11 +80,15 @@ public class Matrix implements Iterable<Integer>{
             matriz[row][column]=valor;
     }
 
-    public int[][] getMatriz() {
-        return matriz;
+    public int[][] getCopy() {
+        int[][] mCopy = new int [this.matriz.length][this.matriz[0].length];
+        for (int i = 0; i < this.getRow(); i++) {
+            System.arraycopy(matriz[i], 0, mCopy[i], 0, this.matriz[0].length);
+        }
+        return mCopy;
     }
 
-    public int[][] getCopy() {
+    public int[][] getMatriz() {
         return matriz;
     }
 
@@ -99,13 +104,4 @@ public class Matrix implements Iterable<Integer>{
         }
         return m.toString();
     }
-    public static void main (String [] args){
-        int[] fila1 = {0, 1, 2};
-        int[] fila2 = {3, 4, 5};
-        int[] fila3 = {6, 7, 8};
-        int[][] data = {fila1, fila2, fila3};
-        Matrix matriz=new Matrix(data);
-        System.out.println(matriz.getString());
-    }
-
 }
