@@ -25,7 +25,6 @@ public class IteratorColumn implements Iterator<Integer> {
         else if(i >= data.length) {
             j++;
             i=0;
-
         }
         return data[i++][j];
     }

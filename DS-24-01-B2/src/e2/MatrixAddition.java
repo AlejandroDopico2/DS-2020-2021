@@ -34,10 +34,6 @@ public class MatrixAddition {
         int[] fila4 = {12, 13, 14, 15};
         int[][] data = {fila1, fila2, fila3, fila4};
         Matrix m1= new Matrix(data);
-        int[] f1 = {0, 1, 2, 3};
-        int[] f2 = {4, 5, 6, 7};
-        int[] f3 = {8, 9, 10, 11};
-        int[] f4 = {12, 13, 14, 15};
         int[][] dato = {fila1, fila2, fila3, fila4};
         Matrix m2= new Matrix(dato);
         MatrixAddition stonks = new MatrixAddition();

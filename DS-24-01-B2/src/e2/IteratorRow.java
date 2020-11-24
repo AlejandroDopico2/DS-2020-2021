@@ -25,7 +25,6 @@ public class IteratorRow implements Iterator<Integer> {
         else if(j >= data[i].length) {
             i++;
             j=0;
-
         }
         return data[i][j++];
     }
