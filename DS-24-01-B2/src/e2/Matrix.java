@@ -92,6 +92,30 @@ public class Matrix implements Iterable<Integer>{
         return matriz;
     }
 
+    public String getRowOrColumn (int n, boolean who){
+        if(n >= matriz.length || n >= matriz[0].length || n < 0)
+            throw new IllegalArgumentException("Nº de fila o de columna inválido");
+        else {
+            StringBuilder copia = new StringBuilder();
+            copia.append("[");
+            for (int i = 0; i < this.matriz.length; i++) {
+                for (int j = 0; j < this.matriz[i].length; j++) {
+
+                    if(who && i == n) { // Si es verdadero copia una fila
+                        copia.append(this.matriz[i][j]);
+                        copia.append("\t");
+                    } else if (!who && j == n ) {
+                        copia.append(this.matriz[i][j]);
+                        copia.append("\t");
+                    }
+                }
+            }
+            copia.append("]");
+            copia.append("\n");
+            return copia.toString();
+        }
+    }
+
     public String getString(){
         StringBuilder m = new StringBuilder();
         for (int[] ints : this.matriz) {

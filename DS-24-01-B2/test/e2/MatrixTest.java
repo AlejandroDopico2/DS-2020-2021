@@ -1,6 +1,7 @@
 package e2;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -122,6 +123,16 @@ class MatrixTest {
     }
 
     @Test
+    public void getRowColumn (){
+        Matrix m = new Matrix(m3);
+        assertEquals("[1\t2\t3\t]\n", m.getRowOrColumn(0, true));
+        assertEquals("[1\t4\t7\t]\n", m.getRowOrColumn(0, false));
+        assertThrows(IllegalArgumentException.class, () -> m.getRowOrColumn(-1, true));
+        assertThrows(IllegalArgumentException.class, () -> m.getRowOrColumn(3, true));
+
+    }
+
+    @Test
     public void getStringTest(){
         Matrix m = new Matrix(m2);
         assertEquals("[1\t2\t]\n" + "[3\t4\t]\n", m.getString() );
@@ -143,6 +154,11 @@ class MatrixTest {
         IteratorColumn iC = new IteratorColumn(data);
         IteratorRow iR = new IteratorRow(data);
 
+        int[][] data2 = {{0,1}};
+        Matrix m3 = new Matrix(data2);
+        MatrixAddition Addition2 = new MatrixAddition();
+
+        assertThrows(ArithmeticException.class,() -> Addition2.Addition(m1, m3, true));
 
         assertThrows(UnsupportedOperationException.class, iC::remove);
         assertThrows(UnsupportedOperationException.class, iR::remove);
