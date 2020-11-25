@@ -28,5 +28,10 @@ public class IteratorRow implements Iterator<Integer> {
         }
         return data[i][j++];
     }
+
+    @Override
+    public void remove(){
+        throw new UnsupportedOperationException("Metodo remove es ilegal");
+    }
 }
 
