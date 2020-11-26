@@ -8,19 +8,16 @@ public class Juego {
     private ArrayList<Bestia> EjercitoB = new ArrayList<>();
 
     public void setEjercitoH(ArrayList<Heroe> ejercitoH) {
-        EjercitoH = ejercitoH;
+        this.EjercitoH = ejercitoH;
     }
 
     public void setEjercitoB(ArrayList<Bestia> ejercitoB) {
-        EjercitoB = ejercitoB;
+        this.EjercitoB = ejercitoB;
     }
 
-    public void Batalla(Dado DadoT){
+    public ArrayList<String> Batalla(Dado DadoT){
 
-        if(EjercitoB.size() == 0 || EjercitoH.size() == 0)
-            throw new IllegalArgumentException("Ejercitos vacios");
-
-        ArrayList<StringBuilder> Resumen = new ArrayList<>();
+        ArrayList<String> Resumen = new ArrayList<>();
         Heroe H;
         Bestia B;
         int i,turnos=1;
@@ -41,41 +38,23 @@ public class Juego {
                 if (B.getHP() <= 0) {
                     turno.append(B.getClass().getSimpleName()).append(" ").append(B.getName()).append(" dies! ").append("\n");
                     EjercitoB.remove(B);
-                    i--;
                 }
                 if (H.getHP() <= 0) {
                     turno.append(H.getClass().getSimpleName()).append(" ").append(H.getName()).append(" dies! ").append("\n");
                     EjercitoH.remove(H);
-                    i--;
                 }
             }
-            Resumen.add(turno);
+            Resumen.add(turno.toString());
             turnos ++;
         }
-        for(i=0;i<Resumen.size();i++){
-            System.out.println(Resumen.get(i));
-        }
-
-        boolean win;
+        StringBuilder winner= new StringBuilder();
         if(EjercitoH.isEmpty()){
-            Winner(true);
-            System.out.println("BESTIAS WIN!!!");
+            winner.append("BESTIAS WIN!!!");
         }
         if(EjercitoB.isEmpty()){
-            Winner(false);
-            System.out.println("HEROES WIN!!!");
+            winner.append("HEROES WIN!!!");
         }
+        Resumen.add(winner.toString());
+        return Resumen;
     }
-
-    public String Winner (boolean win){
-        StringBuilder Winner = new StringBuilder();
-        if(win)
-            Winner.append("BESTIAS WIN!!!");
-        else
-            Winner.append("HEROES WIN!!!");
-
-        return Winner.toString();
-
-    }
-
 }

@@ -16,9 +16,6 @@ class JuegoTest {
         Dado Dado = new Dado();
         Juego J = new Juego();
 
-        J.setEjercitoB(EjercitoBTest);
-        J.setEjercitoH(EjercitoHTest);
-        assertThrows(IllegalArgumentException.class, () -> J.Batalla(Dado));
 
         Heroe H11 = new Elfos("Legolas", 150, 10);
         Heroe H12 = new Humanos("Gandalf", 50, 20);
@@ -36,8 +33,7 @@ class JuegoTest {
 
         J.setEjercitoB(EjercitoBTest);
         J.setEjercitoH(EjercitoHTest);
-
-        assertEquals("Heroes Win", J.Winner());
+        J.Batalla(Dado);
 
         ArrayList<Heroe> EjercitoHTest1 = new ArrayList<>();
         ArrayList<Bestia> EjercitoBTest1 = new ArrayList<>();
@@ -45,6 +41,7 @@ class JuegoTest {
         Juego K = new Juego();
         DadoTrucado DadoT = new DadoTrucado();
 
+        assertThrows(IllegalArgumentException.class, () -> new Elfos("Voldemort", -50, 50));
         Heroe H21 = new Elfos("Legolas", 150, 10);
         Heroe H22 = new Humanos("Gandalf", 50, 20);
         Heroe H23 = new Hobbits("Frodo", 20, 0);
@@ -52,17 +49,18 @@ class JuegoTest {
         Bestia B21 = new Orcos("Lurtz", 190, 20);
         Bestia B22 = new Trasgo("Mauhur", 290, 0);
 
-        EjercitoHTest1.add(H23);
+        EjercitoHTest1.add(H21);
         EjercitoHTest1.add(H22);
         EjercitoHTest1.add(H23);
 
         EjercitoBTest1.add(B21);
         EjercitoBTest1.add(B22);
 
-        J.setEjercitoB(EjercitoBTest1);
-        J.setEjercitoH(EjercitoHTest1);
+        K.setEjercitoB(EjercitoBTest1);
+        K.setEjercitoH(EjercitoHTest1);
 
         K.Batalla(DadoT);
+        assertEquals("BESTIAS WIN!!!", K.Batalla(Dado).get(K.Batalla(Dado).size()-1));
 
     }
 }
