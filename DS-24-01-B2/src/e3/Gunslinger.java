@@ -11,7 +11,15 @@ public class Gunslinger{
 
     public GunslingerAction action() {
         //   public GunslingerAction action(Gunslinger g); LLamo al behavior del Guneslinger y ahí ia diside que tiene que ahser
-        return this.behavior.action(this);
+        GunslingerAction act= this.behavior.action(this);
+        if(act == GunslingerAction.SHOOT){
+            Loads--;
+        }else if(act == GunslingerAction.RELOAD){
+            Loads++;
+        }else if(act == GunslingerAction.MACHINE_GUN){
+            Loads=Loads-5;
+        }
+        return act;
     }
 
     public int getLoads(){

@@ -15,22 +15,16 @@ public class Gunfight {
             System.out.println("Gunslinger 2: " +p2);
             g1.rivalAction(p2);
             g2.rivalAction(p1);
-            if(p1==GunslingerAction.RELOAD){
-                g1.setLoads(g1.getLoads()+1);
-            }
-            if(p2==GunslingerAction.RELOAD){
-                g2.setLoads(g2.getLoads()+1);
-            }
-            if(p1==GunslingerAction.SHOOT){
-                g1.setLoads(g2.getLoads()-1);
-            }
-            if(p2==GunslingerAction.SHOOT){
-                g2.setLoads(g2.getLoads()-1);
-            }
             if(p1==GunslingerAction.SHOOT&&p2==GunslingerAction.SHOOT||p1==GunslingerAction.MACHINE_GUN&&p2==GunslingerAction.MACHINE_GUN){
                 finish=true;
                 System.out.println("Empateishon\n");
                 //empateishon
+            }else if(p1==GunslingerAction.MACHINE_GUN){
+                finish=true;
+                System.out.println("Gunslinger 1 está mamadísimo\n");
+            }else if(p2==GunslingerAction.MACHINE_GUN){
+                finish = true;
+                System.out.println("Gunslinger 2 está mamadísimo\n");
             }else if(p1==GunslingerAction.SHOOT&&p2!=GunslingerAction.PROTECT){
                 finish=true;
                 System.out.println("Gunslinger 1 está mamadísimo\n");
@@ -39,13 +33,6 @@ public class Gunfight {
                 finish=true;
                 System.out.println("Gunslinger 2 está mamadísimo\n");
                 //gana el segundo
-            }else  if(p1==GunslingerAction.MACHINE_GUN&&p2!=GunslingerAction.MACHINE_GUN){
-                finish=true;
-                System.out.println("Gunslinger 1 está mamadísimo\n");
-                //empateishon
-            }else if(p1!=GunslingerAction.MACHINE_GUN&&p2==GunslingerAction.MACHINE_GUN){
-                finish=true;
-                System.out.println("Gunslinger 2 está mamadísimo\n");
             }
             t++;
         }
@@ -56,7 +43,7 @@ public class Gunfight {
         DS_24_01 a = new DS_24_01();
         Negev b = new Negev();
         g1.setBehavior(a);
-        g2.setBehavior(b);
+        g2.setBehavior(a);
         Gunfight epico = new Gunfight();
         epico.duel(g1,g2);
     }
