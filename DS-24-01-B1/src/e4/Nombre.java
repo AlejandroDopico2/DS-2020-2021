@@ -4,5 +4,5 @@ public enum Nombre {
     NORTH,
     EAST,
     SOUTH,
-    WEST;
+    WEST
 }
