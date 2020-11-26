@@ -1,10 +1,7 @@
 package e3;
 
-import e3.behaviors.DS_24_01;
-import e3.behaviors.Negev;
-
 public class Gunfight {
-    public void duel(Gunslinger g1, Gunslinger g2){
+    public String duel(Gunslinger g1, Gunslinger g2){
         boolean finish=false;
         int t=1;
         while((!finish)){
@@ -30,34 +27,31 @@ public class Gunfight {
             if(p1==GunslingerAction.SHOOT&&p2==GunslingerAction.SHOOT||p1==GunslingerAction.MACHINE_GUN&&p2==GunslingerAction.MACHINE_GUN){
                 finish=true;
                 System.out.println("Empateishon\n");
+                return "Empateishon\n";
                 //empateishon
-            }else if(p1==GunslingerAction.SHOOT&&p2!=GunslingerAction.PROTECT){
+            }else if(p1==GunslingerAction.MACHINE_GUN){
                 finish=true;
-                System.out.println("Gunslinger 1 está mamadísimo\n");
+                System.out.println("Gunslinger 1 HAS WON!!\n");
+                return "Gunslinger 1 HAS WON!!\n";
                 //gana el primero
+            }else if(p2==GunslingerAction.MACHINE_GUN){
+                finish=true;
+                System.out.println("Gunslinger 2 HAS WON!!\n");
+                return "Gunslinger 1 HAS WON!!\n";
+                //gana el segundo
+            }else  if(p1==GunslingerAction.SHOOT&&p2!=GunslingerAction.PROTECT){
+                finish=true;
+                System.out.println("Gunslinger 1 HAS WON!!\n");
+                return "Gunslinger 1 HAS WON!!\n";
+                //empateishon
             }else if(p2==GunslingerAction.SHOOT&&p1!=GunslingerAction.PROTECT){
                 finish=true;
-                System.out.println("Gunslinger 2 está mamadísimo\n");
-                //gana el segundo
-            }else  if(p1==GunslingerAction.MACHINE_GUN&&p2!=GunslingerAction.MACHINE_GUN){
-                finish=true;
-                System.out.println("Gunslinger 1 está mamadísimo\n");
-                //empateishon
-            }else if(p1!=GunslingerAction.MACHINE_GUN&&p2==GunslingerAction.MACHINE_GUN){
-                finish=true;
-                System.out.println("Gunslinger 2 está mamadísimo\n");
+                System.out.println("Gunslinger 2 HAS WON!!\n");
+                return "Gunslinger 2 HAS WON!!\n";
             }
             t++;
+            System.out.println("The duel continues...\n");
         }
-    }
-    public static void main(String [] args){
-        Gunslinger g1 = new Gunslinger();
-        Gunslinger g2 = new Gunslinger();
-        DS_24_01 a = new DS_24_01();
-        Negev b = new Negev();
-        g1.setBehavior(a);
-        g2.setBehavior(b);
-        Gunfight epico = new Gunfight();
-        epico.duel(g1,g2);
+        return null;
     }
 }

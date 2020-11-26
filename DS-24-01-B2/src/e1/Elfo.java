@@ -1,7 +1,7 @@
 package e1;
 
-public class Hobbits extends Heroe {
-    Hobbits(String name, int HP, int armor) {
+public class Elfo extends Heroe{
+    Elfo(String name, int HP, int armor){
         super(name, HP, armor);
     }
 
@@ -10,11 +10,10 @@ public class Hobbits extends Heroe {
 
         int dmg = Math.max(dado.Tirada(100), dado.Tirada(100));
 
-        if(rival instanceof Trasgo){
-            dmg -= 5;
+        if(rival instanceof Orco){
+            dmg += 10;
         }
 
         rival.Damage(dmg);
     }
-
 }

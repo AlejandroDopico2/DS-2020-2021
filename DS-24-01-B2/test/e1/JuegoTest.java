@@ -17,11 +17,11 @@ class JuegoTest {
         Juego J = new Juego();
 
 
-        Heroe H11 = new Elfos("Legolas", 150, 10);
-        Heroe H12 = new Humanos("Gandalf", 50, 20);
-        Heroe H13 = new Hobbits("Frodo", 20, 0);
+        Heroe H11 = new Elfo("Legolas", 150, 10);
+        Heroe H12 = new Humano("Gandalf", 50, 20);
+        Heroe H13 = new Hobbit("Frodo", 20, 0);
 
-        Bestia B11 = new Orcos("Lurtz", 190, 20);
+        Bestia B11 = new Orco("Lurtz", 190, 20);
         Bestia B12 = new Trasgo("Mauhur", 290, 0);
 
         EjercitoHTest.add(H11);
@@ -41,12 +41,12 @@ class JuegoTest {
         Juego K = new Juego();
         DadoTrucado DadoT = new DadoTrucado();
 
-        assertThrows(IllegalArgumentException.class, () -> new Elfos("Voldemort", -50, 50));
-        Heroe H21 = new Elfos("Legolas", 150, 10);
-        Heroe H22 = new Humanos("Gandalf", 50, 20);
-        Heroe H23 = new Hobbits("Frodo", 20, 0);
+        assertThrows(IllegalArgumentException.class, () -> new Elfo("Voldemort", -50, 50));
+        Heroe H21 = new Elfo("Legolas", 150, 10);
+        Heroe H22 = new Humano("Gandalf", 50, 20);
+        Heroe H23 = new Hobbit("Frodo", 20, 0);
 
-        Bestia B21 = new Orcos("Lurtz", 190, 20);
+        Bestia B21 = new Orco("Lurtz", 190, 20);
         Bestia B22 = new Trasgo("Mauhur", 290, 0);
 
         EjercitoHTest1.add(H21);

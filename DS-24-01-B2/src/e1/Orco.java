@@ -1,7 +1,7 @@
 package e1;
 
-public class Orcos extends Bestia{
-    Orcos(String name, int HP, int armor){
+public class Orco extends Bestia{
+    Orco(String name, int HP, int armor){
         super(name, HP, armor);
     }
 
