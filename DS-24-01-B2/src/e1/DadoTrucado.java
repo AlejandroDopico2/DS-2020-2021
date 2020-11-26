@@ -6,7 +6,7 @@ public class DadoTrucado extends Dado{
 
     @Override
     public int Tirada(int max){
-        Random DadoT = new Random(2835);
+        Random DadoT = new Random(2539);
         return DadoT.nextInt(max+1);
     }
 }

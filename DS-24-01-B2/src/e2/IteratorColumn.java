@@ -13,10 +13,8 @@ public class IteratorColumn implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-//        if (j < data[i].length)
-//            return false;
-//        return j != data[i].length - 1;
         return !((j==data[1].length) && (i==data.length));
+
     }
 
     @Override
@@ -28,6 +26,11 @@ public class IteratorColumn implements Iterator<Integer> {
             i=0;
         }
         return data[i++][j];
+    }
+
+    @Override
+    public void remove(){
+        throw new UnsupportedOperationException("Metodo remove es ilegal");
     }
 }
 

@@ -1,37 +1,47 @@
 package e2;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class Matrix implements Iterable<Integer>{
-    private int [][] matriz;
-    private boolean who;
+    public int [][] matriz;
+    boolean who;
 
 
     public Matrix(int row, int column){
+        if(row < 1 || column < 1)
+            throw new IllegalArgumentException("Nº de filas y/o columnas incorrecto");
         this.matriz=new int[row][column]; //Inicializamos la matriz
         for(int f=0;f<row;f++){
             for (int c=0;c<column;c++){
                 matriz[f][c]=0;
             }
         }
-
     }
 
     public Matrix(int [][] data){
-        int i=0;
-        //if(data.length != data[i].length){
-        //    throw new IllegalArgumentException("No es rectangular");
-       // }else{
+        if(!isMatrixValid(data)){
+            throw new IllegalArgumentException("No es rectangular");
+        }else{
             this.matriz=new int[data.length][data[0].length]; //Inicializamos la matriz
-            //Aquí construimos a matriz usando iterators
             for(int f=0;f<data.length;f++){
                 System.arraycopy(data[f], 0, matriz[f], 0, data[0].length);
             }
-       // }
+        }
     }
 
-    public void setWho(boolean who){
-        this.who=who;
+    public boolean isMatrixValid (int [][] data){
+        int i = 0;
+
+        if(data == null)
+            return false;
+
+        while (i < data.length) {
+            if ( data[i] == null || data[0].length != data[i].length)
+                return false;
+            i++;
+        }
+        return true;
     }
 
     @Override
@@ -59,46 +69,63 @@ public class Matrix implements Iterable<Integer>{
         return this.matriz[0].length;
     }
 
-    public void setValor(int row, int column, int valor){
-    if(row>=this.matriz.length){
-        throw new IllegalArgumentException("SI soy");
-    }else if(column>=this.matriz[0].length){
-        throw new IllegalArgumentException("SI soy");
-    }else{
-        matriz[row][column]=valor;
+    public int getValor (int row, int column){
+        return matriz[row][column];
     }
+
+    public void setValor(int row, int column, int valor){
+        if(row >= this.matriz.length || row < 0 || column >= this.matriz[0].length || column < 0){
+            throw new IllegalArgumentException("Nº de filas y/o columnas incorrecto");
+        }else
+            matriz[row][column]=valor;
+    }
+
+    public int[][] getCopy() {
+        int[][] mCopy = new int [this.matriz.length][this.matriz[0].length];
+        for (int i = 0; i < this.getRow(); i++) {
+            System.arraycopy(matriz[i], 0, mCopy[i], 0, this.matriz[0].length);
+        }
+        return mCopy;
     }
 
     public int[][] getMatriz() {
         return matriz;
     }
 
-    public int[][] getCopy() {
-        return matriz;
+    public String getRowOrColumn (int n, boolean who){
+        if(n >= matriz.length || n >= matriz[0].length || n < 0)
+            throw new IllegalArgumentException("Nº de fila o de columna inválido");
+        else {
+            StringBuilder copia = new StringBuilder();
+            copia.append("[");
+            for (int i = 0; i < this.matriz.length; i++) {
+                for (int j = 0; j < this.matriz[i].length; j++) {
+
+                    if(who && i == n) { // Si es verdadero copia una fila
+                        copia.append(this.matriz[i][j]);
+                        copia.append("\t");
+                    } else if (!who && j == n ) {
+                        copia.append(this.matriz[i][j]);
+                        copia.append("\t");
+                    }
+                }
+            }
+            copia.append("]");
+            copia.append("\n");
+            return copia.toString();
+        }
     }
 
     public String getString(){
         StringBuilder m = new StringBuilder();
-            for(int f=0;f<this.matriz.length;f++){
-                m.append("[");
-                for (int c=0;c<this.matriz[f].length;c++){
-                    m.append(this.matriz[f][c]);
-                    m.append("\t");
-                }
-                m.append("]\n");
+        for (int[] ints : this.matriz) {
+            m.append("[");
+            for (int anInt : ints) {
+                m.append(anInt);
+                m.append("\t");
             }
+            m.append("]\n");
+        }
         return m.toString();
     }
-    public static void main (String [] args){
-        int[] fila1 = {0, 1, 2, 3};
-        int[] fila2 = {4, 5, 6, 7};
-        int[] fila3 = {8, 9, 10, 11};
-        int[] fila4 = {12, 13, 14, 15};
-        int[][] data = {fila1, fila2, fila3, fila4};
-        Matrix matriz=new Matrix(data);
-        System.out.println(matriz.getString());
-        matriz.setValor(1,3,5);
-        System.out.println(matriz.getString());
-    }
-
 }
