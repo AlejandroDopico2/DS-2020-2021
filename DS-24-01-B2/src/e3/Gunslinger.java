@@ -10,7 +10,6 @@ public class Gunslinger{
     private int RivalLoads;
 
     public GunslingerAction action() {
-        //   public GunslingerAction action(Gunslinger g); LLamo al behavior del Guneslinger y ahí ia diside que tiene que ahser
         GunslingerAction act= this.behavior.action(this);
         if(act == GunslingerAction.SHOOT){
             Loads--;
@@ -28,6 +27,8 @@ public class Gunslinger{
     public void rivalAction(GunslingerAction action){
         if(action== GunslingerAction.RELOAD){
             RivalLoads++;
+        }else if(action == GunslingerAction.SHOOT){
+            RivalLoads--;
         }
         RivalAction.add(action);
     }
@@ -43,7 +44,7 @@ public class Gunslinger{
 
     public void setLoads(int loads) {
         if (loads < 0) {
-            throw new IllegalArgumentException("no");
+            throw new IllegalArgumentException("Negative munition!!!");
         } else {
             this.Loads = loads;
         }

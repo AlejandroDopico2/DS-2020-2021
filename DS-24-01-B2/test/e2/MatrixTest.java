@@ -1,7 +1,11 @@
 package e2;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -160,8 +164,13 @@ class MatrixTest {
 
         assertThrows(ArithmeticException.class,() -> Addition2.Addition(m1, m3, true));
 
+        int[][] data3 = {{0},{1}};
+        Matrix m4 = new Matrix(data3);
+        assertThrows(ArithmeticException.class,() -> Addition2.Addition(m1, m4, true));
+
         assertThrows(UnsupportedOperationException.class, iC::remove);
         assertThrows(UnsupportedOperationException.class, iR::remove);
 
     }
+
 }

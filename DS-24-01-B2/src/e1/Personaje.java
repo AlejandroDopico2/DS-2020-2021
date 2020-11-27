@@ -4,7 +4,8 @@ public abstract class Personaje {
 
     private final String Name;
     private int HP;
-    private final int Armor;
+    private int Armor;
+
 
     Personaje(String name, int HP, int armor) {
         this.Name = name;
@@ -32,4 +33,9 @@ public abstract class Personaje {
     public int getArmor() {
         return Armor;
     }
+
+    public void setArmor(int armor) {
+        Armor = armor;
+    }
+
 }

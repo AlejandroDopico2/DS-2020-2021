@@ -12,7 +12,7 @@ public class DS_24_01 implements Behavior{
             return GunslingerAction.RELOAD;
         }else if(g.getLoads()==5) {
             return GunslingerAction.MACHINE_GUN;
-        }else if(g.getRivalLoads()==4&&g.getLoads()!=0){
+        }else if(g.getRivalLoads()>=3&&g.getLoads()!=0){
             return GunslingerAction.SHOOT;
         }else if(g.getRivalActions().get(g.getRivalActions().size()-1)== GunslingerAction.RELOAD) {
             return GunslingerAction.PROTECT;

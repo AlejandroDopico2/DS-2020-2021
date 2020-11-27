@@ -13,9 +13,6 @@ public class IteratorRow implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-//        if (i >= data.length)
-//            return false;
-//        return j < data[i].length && i != data.length - 1;
         return !((j==data[1].length) && (i==data.length));
     }
 
