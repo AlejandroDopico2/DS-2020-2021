@@ -149,10 +149,10 @@ class MatrixTest {
         Matrix m2= new Matrix(data);
         MatrixAddition Addition = new MatrixAddition();
 
-        Matrix suma = Addition.Addition(m1, m2, true);
+        Matrix suma = Addition.addition(m1, m2, true);
         assertEquals("[0\t2\t]\n" + "[4\t6\t]\n", suma.getString());
 
-        Matrix suma2 = Addition.Addition(m1, m2, false);
+        Matrix suma2 = Addition.addition(m1, m2, false);
         assertEquals("[0\t2\t]\n" + "[4\t6\t]\n", suma2.getString());
 
         IteratorColumn iC = new IteratorColumn(data);
@@ -162,11 +162,11 @@ class MatrixTest {
         Matrix m3 = new Matrix(data2);
         MatrixAddition Addition2 = new MatrixAddition();
 
-        assertThrows(ArithmeticException.class,() -> Addition2.Addition(m1, m3, true));
+        assertThrows(ArithmeticException.class,() -> Addition2.addition(m1, m3, true));
 
         int[][] data3 = {{0},{1}};
         Matrix m4 = new Matrix(data3);
-        assertThrows(ArithmeticException.class,() -> Addition2.Addition(m1, m4, true));
+        assertThrows(ArithmeticException.class,() -> Addition2.addition(m1, m4, true));
 
         assertThrows(UnsupportedOperationException.class, iC::remove);
         assertThrows(UnsupportedOperationException.class, iR::remove);

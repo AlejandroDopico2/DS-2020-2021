@@ -7,8 +7,8 @@ abstract class Heroe extends Personaje {
         super(name, HP, armor);
     }
 
-    public void Ataque (Dado dado, Personaje rival){
-        int dmg =  Math.max(dado.Tirada(100), dado.Tirada(100));
+    public void ataque (Dado dado, Personaje rival){
+        int dmg =  Math.max(dado.tirada(100), dado.tirada(100));
         rival.damage(dmg);
     }
 }

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class Matrix implements Iterable<Integer>{
-    public int [][] matriz;
+    private int [][] matriz;
     boolean who;
 
 
@@ -49,7 +49,7 @@ public class Matrix implements Iterable<Integer>{
         if(this.who){
             return this.rowColumnIterator();
         }else{
-            return this.ColumnRowIterator();
+            return this.columnRowIterator();
         }
     }
 
@@ -57,7 +57,7 @@ public class Matrix implements Iterable<Integer>{
         return new IteratorRow(this.matriz);
     }
 
-    public Iterator<Integer> ColumnRowIterator(){
+    public Iterator<Integer> columnRowIterator(){
        return new IteratorColumn(this.matriz);
     }
 
@@ -127,5 +127,9 @@ public class Matrix implements Iterable<Integer>{
             m.append("]\n");
         }
         return m.toString();
+    }
+
+    public void setWho(boolean who) {
+        this.who = who;
     }
 }

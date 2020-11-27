@@ -29,8 +29,8 @@ public class Juego {
                 B = EjercitoB.get(i);
                 turno.append("Fight between ").append(H.getName()).append(" (Energy= ").append(H.getHP()).append(") and ").append(B.getName()).append("(Energy=").append(B.getHP()).append(")").append("\n");
 
-                H.Ataque(DadoT, B);
-                B.Ataque(DadoT, H);
+                H.ataque(DadoT, B);
+                B.ataque(DadoT, H);
             }
             for (i=0;i<EjercitoH.size()&&i<EjercitoB.size();i++) {
                 H = EjercitoH.get(i);

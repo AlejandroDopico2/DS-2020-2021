@@ -3,9 +3,9 @@ package e2;
 import java.util.Iterator;
 
 public class MatrixAddition {
-    public Matrix Addition(Matrix m1, Matrix m2,boolean who){
-        m1.who=who;
-        m2.who=who;
+    public Matrix addition(Matrix m1, Matrix m2,boolean who){
+        m1.setWho(who);
+        m2.setWho(who);
      if(m1.getColumn()!=m2.getColumn()){
          throw new ArithmeticException("columnas distintas");
      }else if(m1.getRow()!=m2.getRow()){
