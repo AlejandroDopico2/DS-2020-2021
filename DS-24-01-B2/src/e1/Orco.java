@@ -11,6 +11,6 @@ public class Orco extends Bestia{
         int armor = rival.getArmor();
         armor *= 0.9;
 
-        rival.Damage(dmg);
+        rival.damage(dmg);
     }
 }

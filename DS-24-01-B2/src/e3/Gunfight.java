@@ -12,18 +12,18 @@ public class Gunfight {
             System.out.println("Gunslinger 2: " +p2);
             g1.rivalAction(p2);
             g2.rivalAction(p1);
-            if(p1==GunslingerAction.RELOAD){
-                g1.setLoads(g1.getLoads()+1);
-            }
-            if(p2==GunslingerAction.RELOAD){
-                g2.setLoads(g2.getLoads()+1);
-            }
-            if(p1==GunslingerAction.SHOOT){
-                g1.setLoads(g2.getLoads()-1);
-            }
-            if(p2==GunslingerAction.SHOOT){
-                g2.setLoads(g2.getLoads()-1);
-            }
+//            if(p1==GunslingerAction.RELOAD){
+//                g1.setLoads(g1.getLoads()+1);
+//            }
+//            if(p2==GunslingerAction.RELOAD){
+//                g2.setLoads(g2.getLoads()+1);
+//            }
+//            if(p1==GunslingerAction.SHOOT){
+//                g1.setLoads(g2.getLoads()-1);
+//            }
+//            if(p2==GunslingerAction.SHOOT){
+//                g2.setLoads(g2.getLoads()-1);
+//            }
             if(p1==GunslingerAction.SHOOT&&p2==GunslingerAction.SHOOT||p1==GunslingerAction.MACHINE_GUN&&p2==GunslingerAction.MACHINE_GUN){
                 finish=true;
                 System.out.println("Empateishon\n");

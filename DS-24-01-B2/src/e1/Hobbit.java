@@ -14,7 +14,7 @@ public class Hobbit extends Heroe {
             dmg -= 5;
         }
 
-        rival.Damage(dmg);
+        rival.damage(dmg);
     }
 
 }
