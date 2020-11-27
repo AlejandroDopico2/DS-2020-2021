@@ -7,6 +7,8 @@ import org.junit.jupiter.api.function.Executable;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MatrixTest {

@@ -6,10 +6,8 @@ public class MatrixAddition {
     public Matrix addition(Matrix m1, Matrix m2,boolean who){
         m1.setWho(who);
         m2.setWho(who);
-     if(m1.getColumn()!=m2.getColumn()){
-         throw new ArithmeticException("columnas distintas");
-     }else if(m1.getRow()!=m2.getRow()){
-         throw new ArithmeticException("filas distintas");
+     if(m1.getColumn()!=m2.getColumn() || m1.getRow()!=m2.getRow() ){
+         throw new ArithmeticException("filas y/o columnas distintas");
      }else{
          int[][] data=new int[m1.getRow()][m1.getColumn()];
          Matrix suma=new Matrix(data);
