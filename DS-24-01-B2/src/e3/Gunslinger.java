@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Gunslinger{
-    Behavior behavior;
+    private Behavior behavior;
     private int Loads;
-    List<GunslingerAction> RivalAction=new LinkedList<>();
+    private List<GunslingerAction> RivalAction=new LinkedList<>();
     private int RivalLoads;
 
     public GunslingerAction action() {

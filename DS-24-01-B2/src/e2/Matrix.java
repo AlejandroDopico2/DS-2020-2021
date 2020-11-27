@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Matrix implements Iterable<Integer>{
     private int [][] matriz;
-    boolean who;
+    private boolean who;
 
 
     public Matrix(int row, int column){
