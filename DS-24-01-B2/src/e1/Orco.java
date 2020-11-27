@@ -9,7 +9,7 @@ public class Orco extends Bestia{
     public void ataque(Dado dado, Personaje rival){
         int dmg = dado.tirada(90);
         int armorOriginal = rival.getArmor();
-        int tmp = (int) (armorOriginal*0.9);
+        int tmp = (int) (armorOriginal * 0.9);
         rival.setArmor(tmp);
         rival.damage(dmg);
         rival.setArmor(armorOriginal);

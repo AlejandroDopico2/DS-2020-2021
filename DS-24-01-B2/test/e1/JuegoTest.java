@@ -62,5 +62,11 @@ class JuegoTest {
         K.Batalla(DadoT);
         assertEquals("BESTIAS WIN!!!", K.Batalla(Dado).get(K.Batalla(Dado).size()-1));
 
+        //Comprobar que funciona el ataque del orco que es especial
+        Heroe H31 = new Elfo("Legolas", 150, 10);
+        Bestia B31 = new Orco("Lurtz", 190, 20);
+        B31.ataque(DadoT, H31);
+        assertEquals(107, H31.getHP());
+
     }
 }
