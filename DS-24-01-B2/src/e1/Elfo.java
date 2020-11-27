@@ -14,6 +14,6 @@ public class Elfo extends Heroe{
             dmg += 10;
         }
 
-        rival.Damage(dmg);
+        rival.damage(dmg);
     }
 }

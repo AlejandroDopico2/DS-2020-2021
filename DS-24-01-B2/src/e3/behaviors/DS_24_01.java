@@ -20,7 +20,7 @@ public class DS_24_01 implements Behavior{
             siguiente=matar.nextInt(3);
             if(siguiente==0){
                 return GunslingerAction.RELOAD;
-            }else if(siguiente==1){
+            }else if(siguiente==1 && g.getLoads() != 0){
                 return GunslingerAction.SHOOT;
             }else{
                 return GunslingerAction.PROTECT;

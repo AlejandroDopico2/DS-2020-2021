@@ -9,6 +9,6 @@ abstract class Heroe extends Personaje {
 
     public void Ataque (Dado dado, Personaje rival){
         int dmg =  Math.max(dado.Tirada(100), dado.Tirada(100));
-        rival.Damage(dmg);
+        rival.damage(dmg);
     }
 }

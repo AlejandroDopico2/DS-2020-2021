@@ -15,7 +15,7 @@ public abstract class Personaje {
             throw new IllegalArgumentException("Atributos no válidos");
     }
 
-    public void Damage(int damage){
+    public void damage(int damage){
         if(damage>getArmor()){
             this.HP=HP - (damage - getArmor());
         }
