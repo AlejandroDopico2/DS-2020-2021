@@ -1,9 +1,10 @@
 package e1;
 
 public class Termostato {
-    private boolean on;
-    private float temperature;
-    private int time;
+    protected boolean on;
+    protected float temperature;
+    protected int time;
+    EstadoTermostato estado = Off.getInstancia();
 
     private void newTemperature (float currentTemperature){
         time += 5;
@@ -16,6 +17,13 @@ public class Termostato {
         else
             this.temperature = currentTemperature;
 
+    }
+
+    public EstadoTermostato getEstado(){
+        return estado;
+    }
+    public void setEstado(EstadoTermostato estado){
+        this.estado = estado;
     }
 
 }
