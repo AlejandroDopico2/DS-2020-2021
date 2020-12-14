@@ -1,26 +1,20 @@
 package e1;
 
-public class Timer extends EstadoTermostato{
+public class Timer implements EstadoTermostato{
     private static final Timer instancia = new Timer();
     private Timer() {}
-    public static Off getInstancia (){
+    public static Timer getInstancia (){
         return instancia;
     }
 
     @Override
-    public void apagarTermostato (Termostato t){
-        throw new UnsupportedOperationException(); // No se puede apagar un termostato en este modo
-    }
-
-    @Override
-    public void timerTermostato(Termostato t, int time){
-        if (time <= 0)
-            throw new IllegalArgumentException("Tiempo no válido");
-        else {
-            t.setEstado(Timer.getInstancia());
-            t.time = time;
+    public void cambiarModo (Termostato t, int time, float tempP, String modo){
+        if(t.estado == Programar.getInstancia())
+            throw new UnsupportedOperationException("Termostato en modo program/timer, primero pasar a off o manual");
+        else{
+            t.time= time;
+            t.on = true;
         }
-
     }
 
 }

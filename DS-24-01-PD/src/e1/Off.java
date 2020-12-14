@@ -9,13 +9,13 @@ public class Off implements EstadoTermostato {
     }
 
     @Override
-    public void apagarTermostato (Termostato t){
-        if(t.on) {
+    public void cambiarModo (Termostato t, int time, float tempP, String modo){
+        if(!t.on){
+            t.on = true;
+            t.setEstado(Manual.getInstancia());
+        } else{
             t.on = false;
             t.setEstado(Off.getInstancia());
-        } else
-            throw new UnsupportedOperationException();
+        }
     }
-
-
 }

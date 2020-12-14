@@ -1,21 +1,16 @@
 package e1;
 
 public class Termostato {
-    protected boolean on;
-    protected float temperature;
-    protected int time;
+    boolean on;
+    float temperature;
+    float tempConsigna;
+    int time;
     EstadoTermostato estado = Off.getInstancia();
 
-    private void newTemperature (float currentTemperature){
-        time += 5;
+    private void newTemperature (float currentTemperature) {
+        time -= 5;
 
-        //if( modo == timer && time >= timer ){
-            //  modo = off
-            // on = false;
-        if (!on)
-            throw new IllegalArgumentException("El termostato está apagado");
-        else
-            this.temperature = currentTemperature;
+        this.temperature = currentTemperature;
 
     }
 

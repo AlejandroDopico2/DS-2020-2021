@@ -9,10 +9,12 @@ public class Programar implements EstadoTermostato {
     }
 
     @Override
-    public void programarTermostato(Termostato t, int temperature){
-        if(t.temperature > temperature){
-            t.on = false;
-            t.estado = Off.getInstancia();
+    public void cambiarModo (Termostato t, int time, float tempP, String modo){
+        if(t.estado == Timer.getInstancia())
+            throw new UnsupportedOperationException("Termostato en modo program/timer, primero pasar a off o manual");
+        else{
+            t.temperature = tempP;
+            t.on = true;
         }
     }
 }

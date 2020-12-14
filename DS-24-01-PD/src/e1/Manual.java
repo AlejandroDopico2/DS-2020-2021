@@ -9,20 +9,16 @@ public class Manual implements EstadoTermostato{
     }
 
     @Override
-    public void encenderTermostato (Termostato t){
-        t.on = true;
-        t.setEstado(Manual.getInstancia());
+    public void cambiarModo (Termostato t, int time, float tempP, String modo){
+        if (!t.on){
+            t.on = true;
+            t.setEstado(Manual.getInstancia());
+        } else if ("Timer".equals(modo)){
+            t.time = time;
+            t.setEstado(Timer.getInstancia());
+        } else if ("Program".equals(modo)){
+            t.tempConsigna = tempP;
+            t.setEstado(Programar.getInstancia());
+        }
     }
-
-    @Override
-    public void apagarTermostato (Termostato t){
-        t.on = false;
-        t.setEstado(Off.getInstancia());
-    }
-
-    @Override
-    public void programarTermostato(){
-
-    }
-
 }
