@@ -1,6 +1,10 @@
 package e1;
 
 public interface EstadoTermostato {
-     void cambiarModo (Termostato t, int time, float tempP, String modo);
+
+     void offMode (Termostato t);
+     void manualMode (Termostato t);
+     void programMode (Termostato t, float tempP);
+     void timerMode (Termostato t, int time);
      void infoEstado (Termostato t);
 }

@@ -8,21 +8,30 @@ public class Timer implements EstadoTermostato{
     }
 
     @Override
-    public void cambiarModo (Termostato t, int time, float tempP, String modo){
-        if("Program".equals(modo))
-            throw new UnsupportedOperationException("Termostato en modo program/timer, primero pasar a off o manual");
-        else{
-            if ("Manual".equals(modo)){
-                t.setEstado(Manual.getInstancia());
-                System.out.println("Se activa el modo manual");
-                t.time = 0;
-            } else if ("Off".equals(modo)){
-                t.setEstado(Off.getInstancia());
-                t.on = false;
-                System.out.println("Se activa el modo Off");
-            }
-        }
+    public void offMode(Termostato t) {
+        t.setEstado(Off.getInstancia());
+        t.on = false;
+        System.out.println("Se activa el modo Off");
     }
+
+    @Override
+    public void manualMode(Termostato t) {
+        t.setEstado(Manual.getInstancia());
+        t.on = true;
+        System.out.println("Se activa el modo manual");
+    }
+
+    @Override
+    public void programMode(Termostato t, float tempP) {
+        throw new UnsupportedOperationException("Debe pasar primero por el modo Off o Manual");
+    }
+
+    @Override
+    public void timerMode(Termostato t, int time) {
+       throw new UnsupportedOperationException("Termostato ya está en timer, debe respetar el tiempo actual");
+    }
+
+
     @Override
     public void infoEstado(Termostato t) {
         System.out.println(t.temperature + " Modo Timer (faltan " + t.time + " minutos ) - calefacción encendida");

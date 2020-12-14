@@ -1,9 +1,5 @@
 package e1;
 
-import java.sql.SQLOutput;
-import java.util.List;
-import java.util.logging.SocketHandler;
-
 public class Termostato {
     boolean on;
     float temperature;
@@ -11,42 +7,54 @@ public class Termostato {
     int time;
     EstadoTermostato estado = Off.getInstancia(); // Al inicio esta apagada
 
-    public void cambiarModo(int time, float tempP, String modo){
-        estado.cambiarModo(this, time, tempP, modo);
+    public void offMode (){
+        estado.offMode(this);
+    }
+
+    public void manualMode (){
+        estado.manualMode(this);
+    }
+
+    public void programMode (int temp){
+        estado.programMode(this, temp);
+    }
+
+    public void timerMode (int timer){
+        estado.timerMode(this, timer);
     }
 
     public void infoEstado() {
         estado.infoEstado(this);
     }
 
-    private void newTemperature (float currentTemperature) {
+    public void screenInfo(){
+        this.infoEstado();
+    }
 
+    private void newTemperature (float currentTemperature) {
         this.temperature = currentTemperature;
+
         if(this.getEstado() == Timer.getInstancia()){
             time -= 5;
+
             if(time <= 0){
                 this.setEstado(Off.getInstancia());
                 System.out.println("Se desactiva el modo Timer");
                 time = 0;
             }
-        } else if (this.getEstado() == Programar.getInstancia()){
-            if(this.temperature >= tempConsigna)
-                this.on = false;
-            else
-                this.on = true;
 
+        } else if (this.getEstado() == Programar.getInstancia()){
+
+            this.on = !(this.temperature >= tempConsigna);
         }
+
         screenInfo();
     }
-
-    public void screenInfo(){
-        this.infoEstado();
-    }
-
 
     public EstadoTermostato getEstado(){
         return estado;
     }
+
     public void setEstado(EstadoTermostato estado){
         this.estado = estado;
     }
@@ -55,17 +63,17 @@ public class Termostato {
 
         Termostato t = new Termostato();
         t.newTemperature(20.1f);
-        t.cambiarModo(0, 0, "Manual");
+        t.manualMode();
         t.newTemperature(20.1f);
         t.newTemperature(21.5f);
         t.newTemperature(21.1f);
-        t.cambiarModo(19, 0, "Timer");
+        t.timerMode(19);
         t.newTemperature(21.0f);
         t.newTemperature(21.9f);
         t.newTemperature(22.8f);
         t.newTemperature(22.5f);
         t.newTemperature(21.4f);
-        t.cambiarModo(0, 20f, "Program");
+        t.programMode(20);
         t.newTemperature(21.2f);
         t.newTemperature(20.8f);
         t.newTemperature(20.1f);
@@ -73,7 +81,7 @@ public class Termostato {
         t.newTemperature(19.9f);
         t.newTemperature(20.7f);
         t.newTemperature(22.8f);
-        t.cambiarModo(0, 0, "Off");
+        t.offMode();
         t.newTemperature(20.2f);
     }
 }

@@ -9,27 +9,31 @@ public class Manual implements EstadoTermostato{
     }
 
     @Override
-    public void cambiarModo (Termostato t, int time, float tempP, String modo){
-        if ("Off".equals(modo)){
-            t.setEstado(Off.getInstancia());
-            t.on = false;
-            System.out.println("Se activa el modo Off");
-        }else{
-            t.on = true;
-            if ("Manual".equals(modo)){
-                t.setEstado(Manual.getInstancia());
-                System.out.println("Se activa el modo manual");
-            } else if ("Timer".equals(modo)){
-                t.time = time;
-                t.setEstado(Timer.getInstancia());
-                System.out.println("Se activa el modo Timer " + time + " minutos");
-            } else if ("Program".equals(modo)){
-                t.tempConsigna = tempP;
-                t.setEstado(Programar.getInstancia());
-                System.out.println("Se activa el modo Program a " + tempP + " grados");
+    public void offMode(Termostato t) {
+        t.setEstado(Off.getInstancia());
+        t.on = false;
+        System.out.println("Se activa el modo Off");
+    }
 
-            }
-        }
+    @Override
+    public void manualMode(Termostato t) {
+        t.setEstado(Manual.getInstancia());
+        t.on = true;
+        System.out.println("Se activa el modo manual");
+    }
+
+    @Override
+    public void programMode(Termostato t, float tempP) {
+        t.setEstado(Programar.getInstancia());
+        t.tempConsigna = tempP;
+        System.out.println("Se activa el modo Program a " + tempP + " grados");
+    }
+
+    @Override
+    public void timerMode(Termostato t, int time) {
+        t.setEstado(Timer.getInstancia());
+        t.time = time;
+        System.out.println("Se activa el modo Timer " + time + " minutos");
     }
 
     @Override
