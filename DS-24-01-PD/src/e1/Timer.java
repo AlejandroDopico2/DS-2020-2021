@@ -25,6 +25,6 @@ public class Timer implements EstadoTermostato{
     }
     @Override
     public void infoEstado(Termostato t) {
-        System.out.println(t.temperature + " Modo " + getInstancia() + " (faltan " + t.time + " minutos ) - calefacción encendida");
+        System.out.println(t.temperature + " Modo Timer (faltan " + t.time + " minutos ) - calefacción encendida");
     }
 }

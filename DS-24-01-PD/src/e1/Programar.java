@@ -29,7 +29,7 @@ public class Programar implements EstadoTermostato {
 
     @Override
     public void infoEstado(Termostato t) {
-        System.out.print(t.temperature + " Modo " + getInstancia() + "(a " + t.tempConsigna + " grados) ");
+        System.out.print(t.temperature + " Modo Program (a " + t.tempConsigna + " grados) ");
 
         if(t.on)
             System.out.println("- calefacción encendida");

@@ -34,6 +34,6 @@ public class Manual implements EstadoTermostato{
 
     @Override
     public void infoEstado(Termostato t) {
-        System.out.println(t.temperature + " Modo " + getInstancia() + " - calefacción encendida");
+        System.out.println(t.temperature + " Modo Manual - calefacción encendida");
     }
 }
