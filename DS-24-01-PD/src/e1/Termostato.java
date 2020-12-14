@@ -15,6 +15,10 @@ public class Termostato {
         estado.cambiarModo(this, time, tempP, modo);
     }
 
+    public void infoEstado() {
+        estado.infoEstado(this);
+    }
+
     private void newTemperature (float currentTemperature) {
 
         this.temperature = currentTemperature;
@@ -36,17 +40,9 @@ public class Termostato {
     }
 
     public void screenInfo(){
-        System.out.print(temperature + " Modo " + estado.toString());
-        if(getEstado().toString().equals("Timer"))
-            System.out.print("(faltan " + time + " minutos) ");
-        else if ("Program".equals(getEstado()))
-            System.out.print("(a " + tempConsigna + " minutos) ");
-
-        if(on)
-            System.out.println("- Calefacción encendida");
-        else
-            System.out.println(" - Calefacción apagada");
+        this.infoEstado();
     }
+
 
     public EstadoTermostato getEstado(){
         return estado;
@@ -58,6 +54,7 @@ public class Termostato {
     public static void main(String[] args) {
 
         Termostato t = new Termostato();
+        t.newTemperature(20.1f);
         t.cambiarModo(0, 0, "Manual");
         t.newTemperature(20.1f);
         t.newTemperature(21.5f);

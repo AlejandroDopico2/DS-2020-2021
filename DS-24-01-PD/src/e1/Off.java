@@ -31,4 +31,9 @@ public class Off implements EstadoTermostato {
             }
         }
     }
+
+    @Override
+    public void infoEstado(Termostato t) {
+        System.out.println(t.temperature + " Modo " + getInstancia() + " - calefacción apagada");
+    }
 }

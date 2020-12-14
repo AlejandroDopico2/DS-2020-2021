@@ -14,7 +14,6 @@ public class Manual implements EstadoTermostato{
             t.setEstado(Off.getInstancia());
             t.on = false;
             System.out.println("Se activa el modo Off");
-
         }else{
             t.on = true;
             if ("Manual".equals(modo)){
@@ -31,5 +30,10 @@ public class Manual implements EstadoTermostato{
 
             }
         }
+    }
+
+    @Override
+    public void infoEstado(Termostato t) {
+        System.out.println(t.temperature + " Modo " + getInstancia() + " - calefacción encendida");
     }
 }
