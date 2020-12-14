@@ -1,11 +1,11 @@
 package e1;
 
 public class Termostato {
-    boolean on;
-    float temperature;
-    float tempConsigna;
-    int time;
-    EstadoTermostato estado = Off.getInstancia(); // Al inicio esta apagada
+    protected boolean on;
+    protected float temperature;
+    protected float tempConsigna;
+    protected int time;
+    protected EstadoTermostato estado = Off.getInstancia(); // Al inicio esta apagada
 
     public void offMode (){
         estado.offMode(this);
@@ -15,7 +15,7 @@ public class Termostato {
         estado.manualMode(this);
     }
 
-    public void programMode (int temp){
+    public void programMode (float temp){
         estado.programMode(this, temp);
     }
 
@@ -27,7 +27,7 @@ public class Termostato {
         estado.infoEstado(this);
     }
 
-    public void screenInfo(){
+    private void screenInfo(){
         this.infoEstado();
     }
 
