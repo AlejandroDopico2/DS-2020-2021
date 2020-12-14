@@ -10,12 +10,25 @@ public class Off implements EstadoTermostato {
 
     @Override
     public void cambiarModo (Termostato t, int time, float tempP, String modo){
-        if(!t.on){
-            t.on = true;
-            t.setEstado(Manual.getInstancia());
-        } else{
-            t.on = false;
+        if ("Off".equals(modo)){
             t.setEstado(Off.getInstancia());
+            t.on = false;
+            System.out.println("Se activa el modo Off");
+        }else{
+            t.on = true;
+            if ("Manual".equals(modo)){
+                t.setEstado(Manual.getInstancia());
+                System.out.println("Se activa el modo manual");
+            } else if ("Timer".equals(modo)){
+                t.time = time;
+                t.setEstado(Timer.getInstancia());
+                System.out.println("Se activa el modo Timer " + time + " minutos");
+            } else if ("Program".equals(modo)){
+                t.tempConsigna = tempP;
+                t.setEstado(Programar.getInstancia());
+                System.out.println("Se activa el modo Program a " + tempP + " grados");
+
+            }
         }
     }
 }
