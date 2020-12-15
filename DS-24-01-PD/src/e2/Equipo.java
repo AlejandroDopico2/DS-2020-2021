@@ -24,9 +24,7 @@ public class Equipo implements Componente {
 
         info.append("Team ").append(name).append(": ").append(getHours(proyecto)).append("hours, ").append(getMoney(proyecto)).append(" €\n");
 
-        Iterator<Componente> si = componentes.iterator();
-        while (si.hasNext()) {
-            Componente c1 = si.next();
+        for (Componente c1 : componentes) {
             info.append("\t").append(c1.printInfo(proyecto));
         }
         return info.toString();
@@ -35,9 +33,7 @@ public class Equipo implements Componente {
     @Override
     public int getMoney(Proyecto proyecto) {
         money = 0;
-        Iterator<Componente> si = componentes.iterator();
-        while (si.hasNext()) {
-            Componente c1 = si.next();
+        for (Componente c1 : componentes) {
             money += c1.getMoney(proyecto);
         }
         return money;
@@ -52,5 +48,12 @@ public class Equipo implements Componente {
             hours += c1.getHours(proyecto);
         }
         return hours;
+    }
+
+    @Override
+    public void anadir(Componente c, Proyecto p) {
+        for (Componente c1 : componentes) {
+            c1.anadir(c,p);
+        }
     }
 }

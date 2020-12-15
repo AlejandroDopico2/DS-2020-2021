@@ -4,4 +4,5 @@ public interface Componente {
     String printInfo(Proyecto proyecto);
     int getMoney(Proyecto proyecto);
     int getHours(Proyecto proyecto);
+    void anadir(Componente c, Proyecto p);
 }

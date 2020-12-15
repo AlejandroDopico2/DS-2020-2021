@@ -1,10 +1,8 @@
 package e2;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.Iterator;
 
-public class Proyecto implements Componente {
+public class Proyecto {
     private final String name;
     private ArrayList<Componente> componentes= new ArrayList<>();
 
@@ -13,35 +11,25 @@ public class Proyecto implements Componente {
     }
     public void addComponente (Componente c){
         componentes.add(c);
+        c.anadir(c,this);
     }
+
     public String getName(){
         return name;
     }
 
-    @Override
-    public String printInfo(Proyecto proyecto) {
+    public String StringProyecto() {
         StringBuilder info = new StringBuilder();
         info.append("Proyecto: ").append(name).append("\n");
-        Iterator<Componente> si = componentes.iterator();
-        while(si.hasNext()){
-            Componente c1=si.next();
-            info.append("\t").append(c1.printInfo(proyecto));
+        for (Componente c1 : componentes) {
+            info.append("\t").append(c1.printInfo(this));
         }
         return info.toString();
     }
 
-    @Override
-    public int getMoney(Proyecto proyecto) {
-        return 0;
-    }
-
-    @Override
-    public int getHours(Proyecto proyecto) {
-        return 0;
-    }
-
     public static void main (String [] args){
         Proyecto Monguer = new Proyecto("Tremendo espectaculo");
+        Proyecto FTerrible = new Proyecto("Pecheo duro");
         Trabajador Manolo = new Trabajador("Manolo", 20);
         Trabajador Jandro = new Trabajador("Jandro", 15);
         Trabajador Abel = new Trabajador("Abel", 15);
@@ -62,11 +50,18 @@ public class Proyecto implements Componente {
         Jandromamon.addComponente(Jandromonheco);
 
         Monguer.addComponente(Jandromamon);
+        FTerrible.addComponente(Jandromamon);
 
-        System.out.println(Monguer.printInfo(Monguer));
+        Manolo.updatehours(30, FTerrible);
+
+        System.out.println(Monguer.StringProyecto());
 
         System.out.println(Jandromamon.printInfo(Monguer));
         System.out.println(Jandromonheco.printInfo(Monguer));
+
+        System.out.println(FTerrible.StringProyecto());
+
+        System.out.println(Manolo.printInfo(Monguer));
 
     }
 }

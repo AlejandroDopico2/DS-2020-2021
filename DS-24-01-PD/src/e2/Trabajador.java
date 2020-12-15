@@ -22,7 +22,7 @@ public class Trabajador implements Componente{
     @Override
     public String printInfo(Proyecto proyecto) {
         StringBuilder info = new StringBuilder();
-        info.append("Worker ").append(name).append(": ").append(getHours(proyecto)).append(" hours, ").append(getMoney(proyecto)).append(" €\n");
+        info.append("\t").append("Worker ").append(name).append(": ").append(getHours(proyecto)).append(" hours, ").append(getMoney(proyecto)).append(" €\n");
         return info.toString();
     }
 
@@ -35,11 +35,14 @@ public class Trabajador implements Componente{
     public int getHours(Proyecto proyecto) {
         return horasProyecto.get(proyecto.getName());
     }
+
+    @Override
+    public void anadir(Componente c, Proyecto p) {
+        if(horasProyecto.get(p.getName())==null){
+            horasProyecto.put(p.getName(), 10);
+        }
+    }
     /*Hay un proyecto.
-    Cada proyecto tiene equipos; tine nombre finales Done
-    Cada equipo tiene trabajadores Done
-    Cada trabajador tiene  tine nombre y coste por hora finales Done
-    Al finalizar la jornada se contabilizan las horas que ha invertido cada trabajador en cada proyecto
     Podemos obtener horas invertidas o coste total que ha supuesto un trabador para el proyecto
     Un equipo puede tener subequipos Done
     Cada trabajor o equipo puede trabajar en varios equipos a la vez Not
