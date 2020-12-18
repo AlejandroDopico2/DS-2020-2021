@@ -7,23 +7,23 @@ public class Termostato {
     protected int time;
     protected EstadoTermostato estado = Off.getInstancia(); // Al inicio esta apagada
 
-    public void offMode (){
+    protected void offMode (){
         estado.offMode(this);
     }
 
-    public void manualMode (){
+    protected void manualMode (){
         estado.manualMode(this);
     }
 
-    public void programMode (float temp){
+    protected void programMode (float temp){
         estado.programMode(this, temp);
     }
 
-    public void timerMode (int timer){
+    protected void timerMode (int timer){
         estado.timerMode(this, timer);
     }
 
-    public void infoEstado() {
+    protected void infoEstado() {
         estado.infoEstado(this);
     }
 
@@ -31,7 +31,7 @@ public class Termostato {
         this.infoEstado();
     }
 
-    public void newTemperature (float currentTemperature) {
+    protected void newTemperature (float currentTemperature) {
         this.temperature = currentTemperature;
 
         if(this.getEstado() == Timer.getInstancia()){
@@ -51,11 +51,12 @@ public class Termostato {
         screenInfo();
     }
 
-    public EstadoTermostato getEstado(){
+    private EstadoTermostato getEstado(){
         return estado;
     }
 
-    public void setEstado(EstadoTermostato estado){
+    // Private package
+    void setEstado(EstadoTermostato estado){
         this.estado = estado;
     }
 }
