@@ -1,29 +1,30 @@
 package e1;
 
 public class Termostato {
-    protected boolean on;
-    protected float temperature;
-    protected float tempConsigna;
-    protected int time;
-    protected EstadoTermostato estado = Off.getInstancia(); // Al inicio esta apagada
+    // Visibilidad en private package, solo puede acceder a los atributos las clases del paquete
+    boolean on;
+    float temperature;
+    float tempConsigna;
+    int time;
+    EstadoTermostato estado = Off.getInstancia(); // Al inicio esta apagada
 
-    protected void offMode (){
+    void offMode (){
         estado.offMode(this);
     }
 
-    protected void manualMode (){
+    void manualMode (){
         estado.manualMode(this);
     }
 
-    protected void programMode (float temp){
+    void programMode (float temp){
         estado.programMode(this, temp);
     }
 
-    protected void timerMode (int timer){
+    void timerMode (int timer){
         estado.timerMode(this, timer);
     }
 
-    protected void infoEstado() {
+    void infoEstado() {
         estado.infoEstado(this);
     }
 
@@ -31,7 +32,7 @@ public class Termostato {
         this.infoEstado();
     }
 
-    protected void newTemperature (float currentTemperature) {
+    void newTemperature (float currentTemperature) {
         this.temperature = currentTemperature;
 
         if(this.getEstado() == Timer.getInstancia()){
