@@ -58,5 +58,4 @@ public class Termostato {
     public void setEstado(EstadoTermostato estado){
         this.estado = estado;
     }
-
 }
