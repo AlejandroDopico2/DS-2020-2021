@@ -9,7 +9,7 @@ public class Off implements EstadoTermostato {
     }
 
     @Override
-    public void offMode(Termostato t) {
+    public  void offMode(Termostato t) {
 
     }
 

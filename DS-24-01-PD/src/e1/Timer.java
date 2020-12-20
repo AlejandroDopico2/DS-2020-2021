@@ -8,7 +8,7 @@ public class Timer implements EstadoTermostato{
     }
 
     @Override
-    public void offMode(Termostato t) {
+    public  void offMode(Termostato t) {
         t.setEstado(Off.getInstancia());
         t.on = false;
         System.out.println("Se activa el modo Off");
