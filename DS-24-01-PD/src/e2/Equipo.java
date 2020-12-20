@@ -1,14 +1,10 @@
 package e2;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class Equipo implements Componente {
     private final String name;
-    private int money = 0;
-    private int hours = 0;
-    private ArrayList<Componente> componentes = new ArrayList<>();
+    private final ArrayList<Componente> componentes = new ArrayList<>();
 
     public Equipo(String name) {
         this.name = name;
@@ -31,8 +27,13 @@ public class Equipo implements Componente {
     }
 
     @Override
-    public int getMoney(Proyecto proyecto) {
-        money = 0;
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public float getMoney(Proyecto proyecto) {
+        float money = 0;
         for (Componente c1 : componentes) {
             money += c1.getMoney(proyecto);
         }
@@ -40,20 +41,80 @@ public class Equipo implements Componente {
     }
 
     @Override
-    public int getHours(Proyecto proyecto) {
-        hours = 0;
-        Iterator<Componente> si = componentes.iterator();
-        while (si.hasNext()) {
-            Componente c1 = si.next();
+    public float getHours(Proyecto proyecto) {
+        float hours = 0;
+        for (Componente c1 : componentes) {
             hours += c1.getHours(proyecto);
         }
         return hours;
     }
 
     @Override
-    public void anadir(Componente c, Proyecto p) {
+    public void inicializarHash(Proyecto p) {
         for (Componente c1 : componentes) {
-            c1.anadir(c,p);
+            c1.inicializarHash(p);
         }
+    }
+
+    public String TeamMates(Componente c){ //función auxiliar recursiva que recurre en cada equipo
+        StringBuilder mates = new StringBuilder();
+        for(Componente c1 : componentes){
+            if(!c.getName().equals(c1.getName())){
+                if (c1 instanceof Trabajador) {
+                    mates.append(c1.getName()).append(", ");
+                } else {
+                    mates.append(((Equipo) c1).TeamMates(c));
+                }
+            }
+        }
+        return mates.toString();
+    }
+
+    public boolean perteneceTeam(Componente c){
+        for(Componente c1 : componentes){
+            if(!c.getName().equals(c1.getName())){
+                if (c1 instanceof Equipo) {
+                    return ((Equipo) c1).perteneceTeam(c);
+                }
+            }else{
+                return true;
+            }
+        }
+        return false;
+    }
+
+//    @Override
+//    public String mates(Proyecto p) {
+//        StringBuilder mates= new StringBuilder();
+//       if(pertenece(p)) {
+//           mates.append("Los cotrabajadores del Team ").append(this.getName()).append(" en el proyecto ").append(p.getName()).append(" son: ");
+//           for (Componente c1 : p.getComponentes()) {
+//               if (!this.getName().equals(c1.getName())) {
+//                   if (c1 instanceof Trabajador) {
+//                       mates.append(c1.getName()).append(", ");
+//                   } else {
+//                       mates.append(((Equipo) c1).TeamMates(this));
+//                   }
+//               }
+//           }
+//           mates.delete(mates.length() - 2, mates.length());
+//           mates.append(".");
+//       }else{
+//           System.out.println(this.getName() + " no pertenece al proyecto "+ p.getName());
+//       }
+//        return mates.toString();
+//    }
+
+    @Override
+    public boolean pertenece(Proyecto p) {
+        for(Componente c1 : p.getComponentes()){
+            if(c1.getName().equals(this.getName())){
+                return true;
+            }else{
+                if(c1 instanceof Equipo)
+                    return ((Equipo) c1).perteneceTeam(this);
+            }
+        }
+        return false;
     }
 }

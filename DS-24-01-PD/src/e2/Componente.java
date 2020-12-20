@@ -1,8 +1,12 @@
 package e2;
 
+
 public interface Componente {
     String printInfo(Proyecto proyecto);
-    int getMoney(Proyecto proyecto);
-    int getHours(Proyecto proyecto);
-    void anadir(Componente c, Proyecto p);
+    String getName();
+    float getMoney(Proyecto proyecto);
+    float getHours(Proyecto proyecto);
+    void inicializarHash(Proyecto p);
+    //public String mates (Proyecto p);
+    boolean pertenece (Proyecto p);
 }
