@@ -9,7 +9,11 @@ public class Trabajador implements Componente{
 
     public Trabajador(String name, int moneyperhour) {
         this.name = name;
-        this.moneyperhour = moneyperhour;
+        if(moneyperhour>=0)
+            this.moneyperhour = moneyperhour;
+        else
+            throw new IllegalArgumentException();
+
     }
 
     public void updateHours(float hours, Proyecto p){
@@ -17,25 +21,21 @@ public class Trabajador implements Componente{
         horasProyecto.put(p.getName(),newhours);
     }
 
-//    @Override
-//    public String mates (Proyecto p){
-//        StringBuilder mates= new StringBuilder();
-//        if(pertenece(p)){
-//            mates.append("Los cotrabajadores de ").append(this.getName()).append(" en el proyecto ").append(p.getName()).append(" son: ");
-//            for(Componente c1 : p.getComponentes()){
-//                if(c1 instanceof Trabajador){
-//                    mates.append(c1.getName()).append(", ");
-//                }else{
-//                    mates.append(((Equipo) c1).TeamMates(this));
-//                }
-//            }
-//            mates.delete(mates.length()-2,mates.length());
-//            mates.append(".");
-//        }else{
-//            System.out.println(this.getName() + " no pertenece al proyecto "+ p.getName());
-//        }
-//        return mates.toString();
-//    }
+    @Override
+    public String mates (Proyecto p){
+        StringBuilder mates= new StringBuilder();
+        if(pertenece(p)){
+            mates.append("Los cotrabajadores de ").append(this.getName()).append(" en el proyecto ").append(p.getName()).append(" son: ");
+            for(Componente c1 : p.getComponentes()){
+                mates.append(((Equipo) c1).TeamMates(this));
+            }
+            mates.delete(mates.length()-2,mates.length());
+            mates.append(".");
+        }else{
+            mates.append(this.getName()).append(" no pertenece al proyecto ").append(p.getName());
+        }
+        return mates.toString();
+    }
 
     @Override
     public boolean pertenece(Proyecto p) {
@@ -43,7 +43,7 @@ public class Trabajador implements Componente{
     }
 
     @Override
-    public String printInfo(Proyecto proyecto) {
+    public String printInfo(Proyecto proyecto, int recursivo) {
         return "Worker " + name + ": " + getHours(proyecto) + " hours, " + getMoney(proyecto) + " €\n";
     }
 

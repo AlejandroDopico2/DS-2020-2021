@@ -15,13 +15,14 @@ public class Equipo implements Componente {
     }
 
     @Override
-    public String printInfo(Proyecto proyecto) {
+    public String printInfo(Proyecto proyecto, int recursivo) {
         StringBuilder info = new StringBuilder();
 
-        info.append("Team ").append(name).append(": ").append(getHours(proyecto)).append("hours, ").append(getMoney(proyecto)).append(" €\n");
-
+        info.append("Team ").append(name).append(": ").append(getHours(proyecto)).append(" hours, ").append(getMoney(proyecto)).append(" €\n");
+        recursivo++;
         for (Componente c1 : componentes) {
-            info.append("\t").append(c1.printInfo(proyecto));
+            info.append("\t".repeat(Math.max(0, recursivo)));
+            info.append(c1.printInfo(proyecto, recursivo));
         }
         return info.toString();
     }
@@ -70,51 +71,45 @@ public class Equipo implements Componente {
         return mates.toString();
     }
 
-    public boolean perteneceTeam(Componente c){
-        for(Componente c1 : componentes){
-            if(!c.getName().equals(c1.getName())){
-                if (c1 instanceof Equipo) {
-                    return ((Equipo) c1).perteneceTeam(c);
-                }
-            }else{
-                return true;
+    public boolean contiene(Componente c){
+        boolean exists=false;
+        if(this.equals(c)){
+            return true;
+        }else {
+            for (Componente c1 : componentes) {
+                if(c1 instanceof Equipo)
+                    exists = ((Equipo) c1).contiene(c);
             }
         }
-        return false;
+        return exists;
     }
 
-//    @Override
-//    public String mates(Proyecto p) {
-//        StringBuilder mates= new StringBuilder();
-//       if(pertenece(p)) {
-//           mates.append("Los cotrabajadores del Team ").append(this.getName()).append(" en el proyecto ").append(p.getName()).append(" son: ");
-//           for (Componente c1 : p.getComponentes()) {
-//               if (!this.getName().equals(c1.getName())) {
-//                   if (c1 instanceof Trabajador) {
-//                       mates.append(c1.getName()).append(", ");
-//                   } else {
-//                       mates.append(((Equipo) c1).TeamMates(this));
-//                   }
-//               }
-//           }
-//           mates.delete(mates.length() - 2, mates.length());
-//           mates.append(".");
-//       }else{
-//           System.out.println(this.getName() + " no pertenece al proyecto "+ p.getName());
-//       }
-//        return mates.toString();
-//    }
+    @Override
+    public String mates(Proyecto p) {
+        StringBuilder mates= new StringBuilder();
+       if(pertenece(p)) {
+           mates.append("Los cotrabajadores del Team ").append(this.getName()).append(" en el proyecto ").append(p.getName()).append(" son: ");
+           for (Componente c1 : p.getComponentes()) {
+               mates.append(((Equipo) c1).TeamMates(this));
+           }
+           mates.delete(mates.length() - 2, mates.length());
+           mates.append(".");
+       }else{
+           mates.append(this.getName()).append(" no pertenece al proyecto ").append(p.getName());
+       }
+        return mates.toString();
+    }
 
     @Override
     public boolean pertenece(Proyecto p) {
-        for(Componente c1 : p.getComponentes()){
-            if(c1.getName().equals(this.getName())){
-                return true;
-            }else{
-                if(c1 instanceof Equipo)
-                    return ((Equipo) c1).perteneceTeam(this);
+        boolean result=false;
+        if(p.getComponentes().contains(this)) {
+            result = true;
+        }else{
+            for(Componente c1: p.getComponentes()){
+                result=((Equipo) c1).contiene(this);
             }
         }
-        return false;
+        return result;
     }
 }
