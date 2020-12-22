@@ -15,14 +15,14 @@ public class Equipo implements Componente {
     }
 
     @Override
-    public String printInfo(Proyecto proyecto, int recursivo) {
+    public String infoString(Proyecto proyecto, int recursivo) {
         StringBuilder info = new StringBuilder();
 
         info.append("Team ").append(name).append(": ").append(getHours(proyecto)).append(" hours, ").append(getMoney(proyecto)).append(" €\n");
         recursivo++;
         for (Componente c1 : componentes) {
             info.append("\t".repeat(Math.max(0, recursivo)));
-            info.append(c1.printInfo(proyecto, recursivo));
+            info.append(c1.infoString(proyecto, recursivo));
         }
         return info.toString();
     }
@@ -57,14 +57,14 @@ public class Equipo implements Componente {
         }
     }
 
-    public String TeamMates(Componente c){ //función auxiliar recursiva que recurre en cada equipo
+    public String teamMates(Componente c){ //función auxiliar recursiva que recurre en cada equipo
         StringBuilder mates = new StringBuilder();
         for(Componente c1 : componentes){
             if(!c.getName().equals(c1.getName())){
                 if (c1 instanceof Trabajador) {
                     mates.append(c1.getName()).append(", ");
                 } else {
-                    mates.append(((Equipo) c1).TeamMates(c));
+                    mates.append(((Equipo) c1).teamMates(c));
                 }
             }
         }
@@ -90,7 +90,7 @@ public class Equipo implements Componente {
        if(pertenece(p)) {
            mates.append("Los cotrabajadores del Team ").append(this.getName()).append(" en el proyecto ").append(p.getName()).append(" son: ");
            for (Componente c1 : p.getComponentes()) {
-               mates.append(((Equipo) c1).TeamMates(this));
+               mates.append(((Equipo) c1).teamMates(this));
            }
            mates.delete(mates.length() - 2, mates.length());
            mates.append(".");

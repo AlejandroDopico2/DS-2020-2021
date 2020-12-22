@@ -27,7 +27,7 @@ public class Trabajador implements Componente{
         if(pertenece(p)){
             mates.append("Los cotrabajadores de ").append(this.getName()).append(" en el proyecto ").append(p.getName()).append(" son: ");
             for(Componente c1 : p.getComponentes()){
-                mates.append(((Equipo) c1).TeamMates(this));
+                mates.append(((Equipo) c1).teamMates(this));
             }
             mates.delete(mates.length()-2,mates.length());
             mates.append(".");
@@ -43,7 +43,7 @@ public class Trabajador implements Componente{
     }
 
     @Override
-    public String printInfo(Proyecto proyecto, int recursivo) {
+    public String infoString(Proyecto proyecto, int recursivo) {
         return "Worker " + name + ": " + getHours(proyecto) + " hours, " + getMoney(proyecto) + " €\n";
     }
 

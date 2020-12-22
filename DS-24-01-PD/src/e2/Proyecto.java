@@ -37,7 +37,7 @@ public class Proyecto {
         info.append("Proyecto: ").append(name).append("\n");
         for (Componente c1 : componentes) {
             info.append("\t".repeat(Math.max(0, recursivo)));
-            info.append(c1.printInfo(this, recursivo));
+            info.append(c1.infoString(this, recursivo));
             recursivo++;
         }
         return info.toString();

@@ -2,8 +2,6 @@ package e2;
 
 import org.junit.jupiter.api.Test;
 
-import java.security.AlgorithmConstraints;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GestorProyectosTest {
@@ -33,7 +31,7 @@ public class GestorProyectosTest {
         assertEquals(600, Antonio.getMoney(Prueba));
 
         assertTrue(Antonio.pertenece(Prueba));
-        assertEquals("Worker Antonio: 60.0 hours, 600.0 €\n", Antonio.printInfo(Prueba, 0));
+        assertEquals("Worker Antonio: 60.0 hours, 600.0 €\n", Antonio.infoString(Prueba, 0));
         assertEquals("Antonio", Antonio.getName());
     }
 
