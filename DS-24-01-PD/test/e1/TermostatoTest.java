@@ -73,8 +73,6 @@ class TermostatoTest {
         t.timerMode(10); // Cambio a timer
         assertEquals(Timer.getInstancia(), t.estado);
         assertEquals(10, t.time);
-
-
     }
 
     @Test
